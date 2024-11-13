@@ -1,0 +1,229 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Std_Skin_Head
+  m_Shader: {fileID: 4800000, guid: 526231ed22d70c042b4bec774e071cbb, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords:
+  - BOOLEAN_IS_HEAD_ON
+  - BOOLEAN_USE_WRINKLE_ON
+  m_InvalidKeywords:
+  - _DISABLE_SSR_TRANSPARENT
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - RayTracingPrepass
+  - MOTIONVECTORS
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CFULCMask:
+        m_Texture: {fileID: 2800000, guid: aac0d3247b95a1b4ea60bf62387da4a0, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ColorBlendMap:
+        m_Texture: {fileID: 2800000, guid: 70e89318aa82f214c9a3644e729e3b94, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DiffuseMap:
+        m_Texture: {fileID: 2800000, guid: 3d9866428890ad74ba22b9bc8ae9c5bd, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EarNeckMask:
+        m_Texture: {fileID: 2800000, guid: 46a4aee18d6052441b0dbb0f890ca58b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MNAOMap:
+        m_Texture: {fileID: 2800000, guid: 42a36e8489c3fb74a934e6b09a58b601, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskMap:
+        m_Texture: {fileID: 2800000, guid: ac2e16da89f59fb48bde373254c80332, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MicroNormalMap:
+        m_Texture: {fileID: 2800000, guid: 7f5f524714bd578418bb4a5ea31a9a23, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalBlendMap:
+        m_Texture: {fileID: 2800000, guid: 411fbbe828fe5004c8416615c4820c8d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: f582c15b6b6247d4598b509875609c34, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RGBAMask:
+        m_Texture: {fileID: 2800000, guid: b6cc99188021cf6469d0eaec3a34eafe, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SSSMap:
+        m_Texture: {fileID: 2800000, guid: dad38439aa227a74dab886976cd8ab88, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ThicknessMap:
+        m_Texture: {fileID: 2800000, guid: 36fa34c8938d31046b473c24a476c95c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleDiffuseBlend1:
+        m_Texture: {fileID: 2800000, guid: 3db27e5115aa3c845907eef773d70177, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleDiffuseBlend2:
+        m_Texture: {fileID: 2800000, guid: caf74df70b85e774484302a466ffca7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleDiffuseBlend3:
+        m_Texture: {fileID: 2800000, guid: 1dabc646ebf8f0f48a6c427adb3ebd1a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleFlowMap1:
+        m_Texture: {fileID: 2800000, guid: a42e8d3e45c60bf40a759d336e9d5174, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleFlowMap2:
+        m_Texture: {fileID: 2800000, guid: 91548b52d0c29884a88d06f4425e38ff, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleFlowMap3:
+        m_Texture: {fileID: 2800000, guid: c2c29f5878322de4ca381f0c156faae2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleMaskSet123:
+        m_Texture: {fileID: 2800000, guid: 962e1e9706fca7641b82edde27aa4110, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleMaskSet1A:
+        m_Texture: {fileID: 2800000, guid: 4f58cb93c013e59488863ac348237355, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleMaskSet1B:
+        m_Texture: {fileID: 2800000, guid: e56acaa506c01db4e912564a65eff007, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleMaskSet2:
+        m_Texture: {fileID: 2800000, guid: 537f29ee83525df428770f9d4b22ac8f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleMaskSet3:
+        m_Texture: {fileID: 2800000, guid: 58c20b71f3ae7d44188826e3f92f6e93, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleNormalBlend1:
+        m_Texture: {fileID: 2800000, guid: 3cb3770dc9decee4eb5fedab14148985, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleNormalBlend2:
+        m_Texture: {fileID: 2800000, guid: 1c4381560811d144e86a53bd49abf715, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleNormalBlend3:
+        m_Texture: {fileID: 2800000, guid: f6c2f5f8835b71b4eb5ab6d6ce85e477, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleRoughnessBlend1:
+        m_Texture: {fileID: 2800000, guid: 773fea2f9b5c917428150d85419516a8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleRoughnessBlend2:
+        m_Texture: {fileID: 2800000, guid: 558b4974b00cc59419e03254c5f1c386, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WrinkleRoughnessBlend3:
+        m_Texture: {fileID: 2800000, guid: 9465e32b8a09fad4aa6eb8d0ecafed07, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - BOOLEAN_IS_HEAD: 1
+    - BOOLEAN_USE_WRINKLE: 1
+    - _AOStrength: 1
+    - _AScatterScale: 1
+    - _ASmoothnessMod: 0.65
+    - _AlphaCutoff: 0.5
+    - _BScatterScale: 1
+    - _BSmoothnessMod: 0.3
+    - _CheekScatterScale: 1
+    - _CheekSmoothnessMod: 0
+    - _ChinScatterScale: 1
+    - _ChinSmoothnessMod: 0
+    - _ColorBlendStrength: 0
+    - _EarScatterScale: 1
+    - _EarSmoothnessMod: 0
+    - _EnvironmentReflections: 1
+    - _ForeheadScatterScale: 1
+    - _ForeheadSmoothnessMod: 0
+    - _GScatterScale: 1
+    - _GSmoothnessMod: -0.034
+    - _LipsCavityAO: 2.5
+    - _MicroNormalStrength: 0.4
+    - _MicroNormalTiling: 25
+    - _MicroSmoothnessMod: -0.05
+    - _MouthCavityAO: 1.581
+    - _NeckScatterScale: 1
+    - _NeckSmoothnessMod: 0
+    - _NormalBlendStrength: 0
+    - _NormalStrength: 1
+    - _NostrilCavityAO: 2.5
+    - _RScatterScale: 1
+    - _RSmoothnessMod: -0.119
+    - _ReceiveShadows: 1
+    - _SmoothnessMax: 0.7795384
+    - _SmoothnessMin: 0
+    - _SmoothnessPower: 1.35
+    - _SpecularHighlights: 1
+    - _SubsurfaceNormalSoften: 0.65
+    - _SubsurfaceScale: 0.85
+    - _ThicknessScale: 0.4
+    - _TransAmbient: 0.1
+    - _TransDirect: 0.9
+    - _TransNormal: 0.95
+    - _TransScattering: 2
+    - _TransShadow: 0.5
+    - _TransStrength: 1.5
+    - _TransmissionShadow: 0.5
+    - _UnmaskedScatterScale: 1
+    - _UnmaskedSmoothnessMod: 0
+    - _UpperLipScatterScale: 1
+    - _UpperLipSmoothnessMod: 0
+    m_Colors:
+    - _DiffuseColor: {r: 0.99999994, g: 0.99999994, b: 0.99999994, a: 1}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissiveColor: {r: 0, g: 0, b: 0, a: 0}
+    - _SubsurfaceFalloff: {r: 1, g: 0.36862746, b: 0.29803923, a: 1}
+    - _WrinkleValueSet12CL: {r: 0.030997384, g: 0.030997384, b: 0.007256578, a: 0.0049335617}
+    - _WrinkleValueSet12CR: {r: 0.030997384, g: 0.030997384, b: 0.0059266957, a: 0.0045773224}
+    - _WrinkleValueSet1AL: {r: 0.12487208, g: 0, b: 0.0306369, a: 0.0306369}
+    - _WrinkleValueSet1AR: {r: 0.12594597, g: 0, b: 0.0306369, a: 0.0306369}
+    - _WrinkleValueSet1BL: {r: 0.061615065, g: 0.038807325, b: 0.02193611, a: 0.046374626}
+    - _WrinkleValueSet1BR: {r: 0.061615065, g: 0.038807325, b: 0.02193611, a: 0.046778}
+    - _WrinkleValueSet2L: {r: 0.018791303, g: 0.10371603, b: 0.008439053, a: 0.0067025363}
+    - _WrinkleValueSet2R: {r: 0.010004837, g: 0.028010296, b: 0.010621653, a: 0.017446443}
+    - _WrinkleValueSet3DB: {r: 0.0040316447, g: 0.0038682285, b: 0.0040316447, a: 0.0038682285}
+    - _WrinkleValueSet3L: {r: 0.011274692, g: 0.011583678, b: 0.009258869, a: 0.004443627}
+    - _WrinkleValueSet3R: {r: 0.0114271, g: 0.0114271, b: 0.009492985, a: 0.0038682285}
+    - _WrinkleValueSetBCCB: {r: 0.018403238, g: 0.018403238, b: 0, a: 0}
+  m_BuildTextureStacks: []
