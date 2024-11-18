@@ -11828,7 +11828,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1749334847
 Transform:
@@ -11839,7 +11839,7 @@ Transform:
   m_GameObject: {fileID: 1749334846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.014, y: 0, z: 0.173}
+  m_LocalPosition: {x: 0, y: -0, z: 0.117}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12365,6 +12365,7 @@ GameObject:
   - component: {fileID: 2142458985}
   - component: {fileID: 2142458984}
   - component: {fileID: 2142458983}
+  - component: {fileID: 2142458986}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -12380,14 +12381,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142458981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03556139, y: -0.19274119, z: 0.006989888, w: 0.98058015}
-  m_LocalPosition: {x: 0.391, y: 1.654, z: -0.78}
+  m_LocalRotation: {x: -0, y: -0.35708287, z: -0, w: 0.93407273}
+  m_LocalPosition: {x: 0.745, y: 1.701, z: -0.832}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1749334847}
   m_Father: {fileID: 1264992370}
-  m_LocalEulerAnglesHint: {x: 4.154, y: -22.24, z: 0}
+  m_LocalEulerAnglesHint: {x: 0.517, y: -59.766, z: 0.188}
 --- !u!114 &2142458983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12473,7 +12474,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 60
+  field of view: 51
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -12491,6 +12492,19 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &2142458986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142458981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42e12d65eef224ff6add96b54a167ecb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 1264992370}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -16,6 +16,9 @@ Material:
   - _SUB1_ON
   - _SUB2_ON
   - _SUB3_ON
+  - _USECAM_1_ON
+  - _USECAM_2_ON
+  - _USECOLOR_2_ON
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -49,7 +52,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _CameraF: 1.56
+    - _CameraF: 1.15
     - _DepthB: 0.022267
     - _DepthK: 0.2966
     - _MaxDepth: 1.3309573
@@ -64,6 +67,11 @@ Material:
     - _TessPhongStrength: 0.5
     - _TessValue: 16
     - _Test: 2.93
+    - _UseCam_1: 1
+    - _UseCam_2: 1
+    - _UseColor: 0
+    - _UseColor_1: 0
+    - _UseColor_2: 1
     m_Colors:
     - _Camera1Position: {r: -0.026, g: 1.63, b: -1.063, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
