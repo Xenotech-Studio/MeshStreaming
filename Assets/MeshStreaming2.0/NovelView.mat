@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NovelView
+  m_Shader: {fileID: 4800000, guid: 18e9be6f35e9f4b9ea74f3caafbf5938, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords:
+  - _SUB1_ON
+  - _SUB2_ON
+  - _SUB3_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _D_1:
+        m_Texture: {fileID: 8400000, guid: 0146383e3995643be92047c1c3fd405d, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _D_2:
+        m_Texture: {fileID: 8400000, guid: 008ecc74e3a374dc7b0378989802d355, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RGB_1:
+        m_Texture: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _RGB_2:
+        m_Texture: {fileID: 8400000, guid: 3d7039e2d91fd44f68f4f05c291fb0a7, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texcoord:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaCutoff: 0.5
+    - _CameraF: 1.56
+    - _DepthB: 0.022267
+    - _DepthK: 0.2966
+    - _MaxDepth: 1.3309573
+    - _MaxDepthDelta: 0.5
+    - _Sub1: 1
+    - _Sub2: 1
+    - _Sub3: 1
+    - _TessEdgeLength: 16
+    - _TessMax: 25
+    - _TessMaxDisp: 25
+    - _TessMin: 10
+    - _TessPhongStrength: 0.5
+    - _TessValue: 16
+    - _Test: 2.93
+    m_Colors:
+    - _Camera1Position: {r: -0.026, g: 1.63, b: -1.063, a: 0}
+    - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
+    - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}
+    - _Camera1Rotation1: {r: 0, g: 0, b: 0, a: 0}
+    - _Camera2Position: {r: 0.824, g: 1.781, b: -0.752, a: 0}
+    - _Camera2Position1: {r: 0, g: 0, b: 0, a: 0}
+    - _Camera2Rotation: {r: -0, g: 315, b: -0, a: 0}
+    - _Camera2Rotation1: {r: 0, g: 0, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _PositionOffset: {r: 0, g: 0, b: 0, a: 0}
+    - _PositionOffset1: {r: 0, g: 0, b: 0, a: 0}
+  m_BuildTextureStacks: []

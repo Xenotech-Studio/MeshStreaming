@@ -187,7 +187,7 @@ Material:
     - _Claming: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ClippingDepth: 0.829
+    - _ClippingDepth: 1.063
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthB: 0.02226743
@@ -239,7 +239,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Camera1Position: {r: -0.057, g: 1.63, b: -0.829, a: 0}
+    - _Camera1Position: {r: -0.026, g: 1.63, b: -1.063, a: 0}
     - _Camera1Rotation: {r: -0, g: 0, b: 0, a: 0}
     - _Camera2Position: {r: -2, g: 1.884, b: -1, a: 0}
     - _Camera2Rotation: {r: 11.329995, g: 60.000004, b: -0.00000043537133, a: 0}
@@ -249,8 +249,8 @@ Material:
     - _Camera4Rotation: {r: 11.329994, g: 180, b: -0, a: 0}
     - _Camera5Position: {r: 2, g: 1.884, b: 1, a: 0}
     - _Camera5Rotation: {r: 11.329995, g: 240, b: 0.00000043537133, a: 0}
-    - _Camera6Position: {r: 2, g: 1.884, b: -1, a: 0}
-    - _Camera6Rotation: {r: 11.329995, g: 300, b: 0.00000043537133, a: 0}
+    - _Camera6Position: {r: 0.824, g: 1.781, b: -0.752, a: 0}
+    - _Camera6Rotation: {r: -0, g: 315, b: -0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _EmptyColor: {r: 0.39622524, g: 0.39622524, b: 0.39622524, a: 0}
