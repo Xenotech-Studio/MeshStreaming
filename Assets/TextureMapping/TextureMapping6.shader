@@ -447,87 +447,105 @@ Shader "TextureMapping6"
 						ShadowCoords = TransformWorldToShadowCoord( WorldPosition );
 					#endif
 				#endif
-				float3 temp_output_53_0_g35 = ( ( WorldPosition - _PositionOffset ) - _Camera1Position );
-				float3 break5_g35 = ( ( ( _Camera1Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g35 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g35, float3(0,1,0), break5_g35.y );
-				float3 rotatedValue12_g35 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g35, float3(1,0,0), break5_g35.x );
-				float3 rotatedValue10_g35 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g35, float3(0,0,1), break5_g35.z );
-				float3 break3_g35 = rotatedValue10_g35;
-				float2 appendResult49_g35 = (float2(break3_g35.x , break3_g35.y));
-				float2 temp_output_7_0_g35 = ( ( ( appendResult49_g35 / _CameraF ) / break3_g35.z ) + float2( 0.5,0.5 ) );
+				float3 temp_output_56_0_g60 = WorldPosition;
+				float3 temp_output_57_0_g60 = _PositionOffset;
+				float3 temp_output_61_0_g60 = _Camera1Position;
+				float3 temp_output_53_0_g60 = ( ( temp_output_56_0_g60 - temp_output_57_0_g60 ) - temp_output_61_0_g60 );
+				float3 break35_g61 = ( ( ( _Camera1Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g61 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g60 - temp_output_57_0_g60 ) - temp_output_61_0_g60 ), float3(0,1,0), break35_g61.y );
+				float3 rotatedValue39_g61 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g61, float3(1,0,0), break35_g61.x );
+				float3 rotatedValue33_g61 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g61, float3(0,0,1), break35_g61.z );
+				float3 break44_g61 = rotatedValue33_g61;
+				float2 appendResult31_g61 = (float2(break44_g61.x , break44_g61.y));
+				float2 temp_output_160_0_g60 = ( ( ( appendResult31_g61 / _CameraF ) / break44_g61.z ) + float2( 0.5,0.5 ) );
 				float3 ase_worldNormal = IN.ase_texcoord3.xyz;
-				float3 normalizeResult20_g35 = normalize( temp_output_53_0_g35 );
-				float dotResult71_g35 = dot( ase_worldNormal , ( -1 * normalizeResult20_g35 ) );
-				float clampResult99_g35 = clamp( dotResult71_g35 , 0.0 , 1.0 );
-				float clampResult111_g35 = clamp( pow( clampResult99_g35 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_712_62 = ( abs( ( length( temp_output_53_0_g35 ) - ( ( _DepthK / tex2D( _Depth1, temp_output_7_0_g35 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g35 : 0.0 );
-				float4 temp_output_712_0 = tex2D( _Viewport1, temp_output_7_0_g35 );
-				float3 temp_output_53_0_g37 = ( ( WorldPosition - _PositionOffset ) - _Camera2Position );
-				float3 break5_g37 = ( ( ( _Camera2Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g37 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g37, float3(0,1,0), break5_g37.y );
-				float3 rotatedValue12_g37 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g37, float3(1,0,0), break5_g37.x );
-				float3 rotatedValue10_g37 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g37, float3(0,0,1), break5_g37.z );
-				float3 break3_g37 = rotatedValue10_g37;
-				float2 appendResult49_g37 = (float2(break3_g37.x , break3_g37.y));
-				float2 temp_output_7_0_g37 = ( ( ( appendResult49_g37 / _CameraF ) / break3_g37.z ) + float2( 0.5,0.5 ) );
-				float3 normalizeResult20_g37 = normalize( temp_output_53_0_g37 );
-				float dotResult71_g37 = dot( ase_worldNormal , ( -1 * normalizeResult20_g37 ) );
-				float clampResult99_g37 = clamp( dotResult71_g37 , 0.0 , 1.0 );
-				float clampResult111_g37 = clamp( pow( clampResult99_g37 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_714_62 = ( abs( ( length( temp_output_53_0_g37 ) - ( ( _DepthK / tex2D( _Depth2, temp_output_7_0_g37 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g37 : 0.0 );
-				float3 temp_output_53_0_g34 = ( ( WorldPosition - _PositionOffset ) - _Camera3Position );
-				float3 break5_g34 = ( ( ( _Camera3Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g34 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g34, float3(0,1,0), break5_g34.y );
-				float3 rotatedValue12_g34 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g34, float3(1,0,0), break5_g34.x );
-				float3 rotatedValue10_g34 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g34, float3(0,0,1), break5_g34.z );
-				float3 break3_g34 = rotatedValue10_g34;
-				float2 appendResult49_g34 = (float2(break3_g34.x , break3_g34.y));
-				float2 temp_output_7_0_g34 = ( ( ( appendResult49_g34 / _CameraF ) / break3_g34.z ) + float2( 0.5,0.5 ) );
-				float3 normalizeResult20_g34 = normalize( temp_output_53_0_g34 );
-				float dotResult71_g34 = dot( ase_worldNormal , ( -1 * normalizeResult20_g34 ) );
-				float clampResult99_g34 = clamp( dotResult71_g34 , 0.0 , 1.0 );
-				float clampResult111_g34 = clamp( pow( clampResult99_g34 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_711_62 = ( abs( ( length( temp_output_53_0_g34 ) - ( ( _DepthK / tex2D( _Depth3, temp_output_7_0_g34 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g34 : 0.0 );
-				float3 temp_output_53_0_g36 = ( ( WorldPosition - _PositionOffset ) - _Camera4Position );
-				float3 break5_g36 = ( ( ( _Camera4Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g36 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g36, float3(0,1,0), break5_g36.y );
-				float3 rotatedValue12_g36 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g36, float3(1,0,0), break5_g36.x );
-				float3 rotatedValue10_g36 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g36, float3(0,0,1), break5_g36.z );
-				float3 break3_g36 = rotatedValue10_g36;
-				float2 appendResult49_g36 = (float2(break3_g36.x , break3_g36.y));
-				float2 temp_output_7_0_g36 = ( ( ( appendResult49_g36 / _CameraF ) / break3_g36.z ) + float2( 0.5,0.5 ) );
-				float3 normalizeResult20_g36 = normalize( temp_output_53_0_g36 );
-				float dotResult71_g36 = dot( ase_worldNormal , ( -1 * normalizeResult20_g36 ) );
-				float clampResult99_g36 = clamp( dotResult71_g36 , 0.0 , 1.0 );
-				float clampResult111_g36 = clamp( pow( clampResult99_g36 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_713_62 = ( abs( ( length( temp_output_53_0_g36 ) - ( ( _DepthK / tex2D( _Depth4, temp_output_7_0_g36 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g36 : 0.0 );
-				float3 temp_output_53_0_g39 = ( ( WorldPosition - _PositionOffset ) - _Camera5Position );
-				float3 break5_g39 = ( ( ( _Camera5Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g39 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g39, float3(0,1,0), break5_g39.y );
-				float3 rotatedValue12_g39 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g39, float3(1,0,0), break5_g39.x );
-				float3 rotatedValue10_g39 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g39, float3(0,0,1), break5_g39.z );
-				float3 break3_g39 = rotatedValue10_g39;
-				float2 appendResult49_g39 = (float2(break3_g39.x , break3_g39.y));
-				float2 temp_output_7_0_g39 = ( ( ( appendResult49_g39 / _CameraF ) / break3_g39.z ) + float2( 0.5,0.5 ) );
-				float3 normalizeResult20_g39 = normalize( temp_output_53_0_g39 );
-				float dotResult71_g39 = dot( ase_worldNormal , ( -1 * normalizeResult20_g39 ) );
-				float clampResult99_g39 = clamp( dotResult71_g39 , 0.0 , 1.0 );
-				float clampResult111_g39 = clamp( pow( clampResult99_g39 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_716_62 = ( abs( ( length( temp_output_53_0_g39 ) - ( ( _DepthK / tex2D( _Depth5, temp_output_7_0_g39 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g39 : 0.0 );
-				float3 temp_output_53_0_g38 = ( ( WorldPosition - _PositionOffset ) - _Camera6Position );
-				float3 break5_g38 = ( ( ( _Camera6Rotation * 3.141593 ) / 180 ) * -1 );
-				float3 rotatedValue17_g38 = RotateAroundAxis( float3( 0,0,0 ), temp_output_53_0_g38, float3(0,1,0), break5_g38.y );
-				float3 rotatedValue12_g38 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue17_g38, float3(1,0,0), break5_g38.x );
-				float3 rotatedValue10_g38 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue12_g38, float3(0,0,1), break5_g38.z );
-				float3 break3_g38 = rotatedValue10_g38;
-				float2 appendResult49_g38 = (float2(break3_g38.x , break3_g38.y));
-				float2 temp_output_7_0_g38 = ( ( ( appendResult49_g38 / _CameraF ) / break3_g38.z ) + float2( 0.5,0.5 ) );
-				float3 normalizeResult20_g38 = normalize( temp_output_53_0_g38 );
-				float dotResult71_g38 = dot( ase_worldNormal , ( -1 * normalizeResult20_g38 ) );
-				float clampResult99_g38 = clamp( dotResult71_g38 , 0.0 , 1.0 );
-				float clampResult111_g38 = clamp( pow( clampResult99_g38 , _NormalCoeff ) , 0.0 , 1.0 );
-				float temp_output_715_62 = ( abs( ( length( temp_output_53_0_g38 ) - ( ( _DepthK / tex2D( _Depth6, temp_output_7_0_g38 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g38 : 0.0 );
-				float4 temp_output_84_0 = ( ( ( temp_output_712_62 * temp_output_712_0 * _EnableCam1 ) + ( temp_output_714_62 * tex2D( _Viewport2, temp_output_7_0_g37 ) * _EnableCam2 ) + ( temp_output_711_62 * tex2D( _Viewport3, temp_output_7_0_g34 ) * _EnableCam3 ) + ( temp_output_713_62 * tex2D( _Viewport4, temp_output_7_0_g36 ) * _EnableCam4 ) + ( temp_output_716_62 * tex2D( _Viewport5, temp_output_7_0_g39 ) * _EnableCam5 ) + ( temp_output_715_62 * tex2D( _Viewport6, temp_output_7_0_g38 ) * _EnableCam6 ) + ( _EmptyWeight * _EmptyColor ) ) / ( ( _EnableCam1 * temp_output_712_62 ) + ( _EnableCam2 * temp_output_714_62 ) + ( _EnableCam3 * temp_output_711_62 ) + ( _EnableCam4 * temp_output_713_62 ) + ( _EnableCam5 * temp_output_716_62 ) + ( _EnableCam6 * temp_output_715_62 ) + _EmptyWeight ) );
+				float3 normalizeResult20_g60 = normalize( temp_output_53_0_g60 );
+				float dotResult71_g60 = dot( ase_worldNormal , ( -1 * normalizeResult20_g60 ) );
+				float clampResult99_g60 = clamp( dotResult71_g60 , 0.0 , 1.0 );
+				float clampResult111_g60 = clamp( pow( clampResult99_g60 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_722_62 = ( abs( ( length( temp_output_53_0_g60 ) - ( ( _DepthK / tex2D( _Depth1, temp_output_160_0_g60 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g60 : 0.0 );
+				float4 temp_output_722_0 = tex2D( _Viewport1, temp_output_160_0_g60 );
+				float3 temp_output_56_0_g54 = WorldPosition;
+				float3 temp_output_57_0_g54 = _PositionOffset;
+				float3 temp_output_61_0_g54 = _Camera2Position;
+				float3 temp_output_53_0_g54 = ( ( temp_output_56_0_g54 - temp_output_57_0_g54 ) - temp_output_61_0_g54 );
+				float3 break35_g55 = ( ( ( _Camera2Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g55 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g54 - temp_output_57_0_g54 ) - temp_output_61_0_g54 ), float3(0,1,0), break35_g55.y );
+				float3 rotatedValue39_g55 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g55, float3(1,0,0), break35_g55.x );
+				float3 rotatedValue33_g55 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g55, float3(0,0,1), break35_g55.z );
+				float3 break44_g55 = rotatedValue33_g55;
+				float2 appendResult31_g55 = (float2(break44_g55.x , break44_g55.y));
+				float2 temp_output_160_0_g54 = ( ( ( appendResult31_g55 / _CameraF ) / break44_g55.z ) + float2( 0.5,0.5 ) );
+				float3 normalizeResult20_g54 = normalize( temp_output_53_0_g54 );
+				float dotResult71_g54 = dot( ase_worldNormal , ( -1 * normalizeResult20_g54 ) );
+				float clampResult99_g54 = clamp( dotResult71_g54 , 0.0 , 1.0 );
+				float clampResult111_g54 = clamp( pow( clampResult99_g54 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_719_62 = ( abs( ( length( temp_output_53_0_g54 ) - ( ( _DepthK / tex2D( _Depth2, temp_output_160_0_g54 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g54 : 0.0 );
+				float3 temp_output_56_0_g58 = WorldPosition;
+				float3 temp_output_57_0_g58 = _PositionOffset;
+				float3 temp_output_61_0_g58 = _Camera3Position;
+				float3 temp_output_53_0_g58 = ( ( temp_output_56_0_g58 - temp_output_57_0_g58 ) - temp_output_61_0_g58 );
+				float3 break35_g59 = ( ( ( _Camera3Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g59 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g58 - temp_output_57_0_g58 ) - temp_output_61_0_g58 ), float3(0,1,0), break35_g59.y );
+				float3 rotatedValue39_g59 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g59, float3(1,0,0), break35_g59.x );
+				float3 rotatedValue33_g59 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g59, float3(0,0,1), break35_g59.z );
+				float3 break44_g59 = rotatedValue33_g59;
+				float2 appendResult31_g59 = (float2(break44_g59.x , break44_g59.y));
+				float2 temp_output_160_0_g58 = ( ( ( appendResult31_g59 / _CameraF ) / break44_g59.z ) + float2( 0.5,0.5 ) );
+				float3 normalizeResult20_g58 = normalize( temp_output_53_0_g58 );
+				float dotResult71_g58 = dot( ase_worldNormal , ( -1 * normalizeResult20_g58 ) );
+				float clampResult99_g58 = clamp( dotResult71_g58 , 0.0 , 1.0 );
+				float clampResult111_g58 = clamp( pow( clampResult99_g58 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_721_62 = ( abs( ( length( temp_output_53_0_g58 ) - ( ( _DepthK / tex2D( _Depth3, temp_output_160_0_g58 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g58 : 0.0 );
+				float3 temp_output_56_0_g56 = WorldPosition;
+				float3 temp_output_57_0_g56 = _PositionOffset;
+				float3 temp_output_61_0_g56 = _Camera4Position;
+				float3 temp_output_53_0_g56 = ( ( temp_output_56_0_g56 - temp_output_57_0_g56 ) - temp_output_61_0_g56 );
+				float3 break35_g57 = ( ( ( _Camera4Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g57 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g56 - temp_output_57_0_g56 ) - temp_output_61_0_g56 ), float3(0,1,0), break35_g57.y );
+				float3 rotatedValue39_g57 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g57, float3(1,0,0), break35_g57.x );
+				float3 rotatedValue33_g57 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g57, float3(0,0,1), break35_g57.z );
+				float3 break44_g57 = rotatedValue33_g57;
+				float2 appendResult31_g57 = (float2(break44_g57.x , break44_g57.y));
+				float2 temp_output_160_0_g56 = ( ( ( appendResult31_g57 / _CameraF ) / break44_g57.z ) + float2( 0.5,0.5 ) );
+				float3 normalizeResult20_g56 = normalize( temp_output_53_0_g56 );
+				float dotResult71_g56 = dot( ase_worldNormal , ( -1 * normalizeResult20_g56 ) );
+				float clampResult99_g56 = clamp( dotResult71_g56 , 0.0 , 1.0 );
+				float clampResult111_g56 = clamp( pow( clampResult99_g56 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_720_62 = ( abs( ( length( temp_output_53_0_g56 ) - ( ( _DepthK / tex2D( _Depth4, temp_output_160_0_g56 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g56 : 0.0 );
+				float3 temp_output_56_0_g50 = WorldPosition;
+				float3 temp_output_57_0_g50 = _PositionOffset;
+				float3 temp_output_61_0_g50 = _Camera5Position;
+				float3 temp_output_53_0_g50 = ( ( temp_output_56_0_g50 - temp_output_57_0_g50 ) - temp_output_61_0_g50 );
+				float3 break35_g51 = ( ( ( _Camera5Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g51 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g50 - temp_output_57_0_g50 ) - temp_output_61_0_g50 ), float3(0,1,0), break35_g51.y );
+				float3 rotatedValue39_g51 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g51, float3(1,0,0), break35_g51.x );
+				float3 rotatedValue33_g51 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g51, float3(0,0,1), break35_g51.z );
+				float3 break44_g51 = rotatedValue33_g51;
+				float2 appendResult31_g51 = (float2(break44_g51.x , break44_g51.y));
+				float2 temp_output_160_0_g50 = ( ( ( appendResult31_g51 / _CameraF ) / break44_g51.z ) + float2( 0.5,0.5 ) );
+				float3 normalizeResult20_g50 = normalize( temp_output_53_0_g50 );
+				float dotResult71_g50 = dot( ase_worldNormal , ( -1 * normalizeResult20_g50 ) );
+				float clampResult99_g50 = clamp( dotResult71_g50 , 0.0 , 1.0 );
+				float clampResult111_g50 = clamp( pow( clampResult99_g50 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_717_62 = ( abs( ( length( temp_output_53_0_g50 ) - ( ( _DepthK / tex2D( _Depth5, temp_output_160_0_g50 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g50 : 0.0 );
+				float3 temp_output_56_0_g52 = WorldPosition;
+				float3 temp_output_57_0_g52 = _PositionOffset;
+				float3 temp_output_61_0_g52 = _Camera6Position;
+				float3 temp_output_53_0_g52 = ( ( temp_output_56_0_g52 - temp_output_57_0_g52 ) - temp_output_61_0_g52 );
+				float3 break35_g53 = ( ( ( _Camera6Rotation * 3.141593 ) / 180 ) * -1 );
+				float3 rotatedValue37_g53 = RotateAroundAxis( float3( 0,0,0 ), ( ( temp_output_56_0_g52 - temp_output_57_0_g52 ) - temp_output_61_0_g52 ), float3(0,1,0), break35_g53.y );
+				float3 rotatedValue39_g53 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue37_g53, float3(1,0,0), break35_g53.x );
+				float3 rotatedValue33_g53 = RotateAroundAxis( float3( 0,0,0 ), rotatedValue39_g53, float3(0,0,1), break35_g53.z );
+				float3 break44_g53 = rotatedValue33_g53;
+				float2 appendResult31_g53 = (float2(break44_g53.x , break44_g53.y));
+				float2 temp_output_160_0_g52 = ( ( ( appendResult31_g53 / _CameraF ) / break44_g53.z ) + float2( 0.5,0.5 ) );
+				float3 normalizeResult20_g52 = normalize( temp_output_53_0_g52 );
+				float dotResult71_g52 = dot( ase_worldNormal , ( -1 * normalizeResult20_g52 ) );
+				float clampResult99_g52 = clamp( dotResult71_g52 , 0.0 , 1.0 );
+				float clampResult111_g52 = clamp( pow( clampResult99_g52 , _NormalCoeff ) , 0.0 , 1.0 );
+				float temp_output_718_62 = ( abs( ( length( temp_output_53_0_g52 ) - ( ( _DepthK / tex2D( _Depth6, temp_output_160_0_g52 ).r ) + _DepthB ) ) ) <= ( _DropOcculusion == 0.0 ? 100.0 : _OcculusionTolerance ) ? clampResult111_g52 : 0.0 );
+				float4 temp_output_84_0 = ( ( ( temp_output_722_62 * temp_output_722_0 * _EnableCam1 ) + ( temp_output_719_62 * tex2D( _Viewport2, temp_output_160_0_g54 ) * _EnableCam2 ) + ( temp_output_721_62 * tex2D( _Viewport3, temp_output_160_0_g58 ) * _EnableCam3 ) + ( temp_output_720_62 * tex2D( _Viewport4, temp_output_160_0_g56 ) * _EnableCam4 ) + ( temp_output_717_62 * tex2D( _Viewport5, temp_output_160_0_g50 ) * _EnableCam5 ) + ( temp_output_718_62 * tex2D( _Viewport6, temp_output_160_0_g52 ) * _EnableCam6 ) + ( _EmptyWeight * _EmptyColor ) ) / ( ( _EnableCam1 * temp_output_722_62 ) + ( _EnableCam2 * temp_output_719_62 ) + ( _EnableCam3 * temp_output_721_62 ) + ( _EnableCam4 * temp_output_720_62 ) + ( _EnableCam5 * temp_output_717_62 ) + ( _EnableCam6 * temp_output_718_62 ) + _EmptyWeight ) );
 				
 				float3 BakedAlbedo = 0;
 				float3 BakedEmission = 0;
@@ -1061,73 +1079,73 @@ Shader "TextureMapping6"
 }
 /*ASEBEGIN
 Version=18912
-0;67;1512;810;5140.649;449.1047;3.473256;True;True
+-196;-1027;1920;927;5214.909;1690.147;3.340743;True;False
 Node;AmplifyShaderEditor.SimpleAddOpNode;6;-681.1222,-3.923917;Inherit;False;7;7;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;2;COLOR;0,0,0,0;False;3;COLOR;0,0,0,0;False;4;COLOR;0,0,0,0;False;5;COLOR;0,0,0,0;False;6;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.FunctionNode;715;-1702.044,604.3686;Inherit;False;SingleCameraMapping;1;;38;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.TexturePropertyNode;16;-1937.6,579.0958;Inherit;True;Property;_Viewport6;Viewport 6;18;0;Create;True;0;0;0;False;0;False;3d7039e2d91fd44f68f4f05c291fb0a7;3d7039e2d91fd44f68f4f05c291fb0a7;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode;245;-1577.029,-387.9352;Inherit;False;Property;_EnableCam3;Enable Cam 3;35;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.FunctionNode;721;-1688.627,-306.8883;Inherit;False;SingleCameraMapping;1;;58;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;253;-1363.943,-683.3734;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.TexturePropertyNode;14;-1949.079,256.759;Inherit;True;Property;_Viewport5;Viewport 5;17;0;Create;True;0;0;0;False;0;False;92a22c3073f174e259ea57f2a8403d5e;92a22c3073f174e259ea57f2a8403d5e;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode;697;-2594.955,261.482;Inherit;True;Property;_Depth5;Depth 5;44;0;Create;True;0;0;0;False;0;False;None;81f1138ec6a204921a755f59d5b8be70;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;14;-1949.079,256.759;Inherit;True;Property;_Viewport5;Viewport 5;20;0;Create;True;0;0;0;False;0;False;92a22c3073f174e259ea57f2a8403d5e;92a22c3073f174e259ea57f2a8403d5e;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;697;-2594.955,261.482;Inherit;True;Property;_Depth5;Depth 5;47;0;Create;True;0;0;0;False;0;False;None;81f1138ec6a204921a755f59d5b8be70;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;96;-1356.951,607.5546;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.RangedFloatNode;272;-977.0403,-1286.88;Inherit;True;Constant;_Float2;Float 2;34;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector3Node;37;-2966.03,-216.9255;Inherit;False;Property;_PositionOffset;PositionOffset;31;0;Create;True;0;0;0;False;0;False;0,0,0;3.5,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;37;-2966.03,-216.9255;Inherit;False;Property;_PositionOffset;PositionOffset;34;0;Create;True;0;0;0;False;0;False;0,0,0;3.5,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;250;-1366.198,164.43;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector3Node;67;-2150.972,-602.8923;Inherit;False;Property;_Camera2Rotation;Camera 2 Rotation;30;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,60,-4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.TexturePropertyNode;695;-2592.232,-313.2934;Inherit;True;Property;_Depth3;Depth 3;42;0;Create;True;0;0;0;False;0;False;None;8a69cc9b134364ad8871657d283a82da;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode;247;-1597.488,174.7489;Inherit;False;Property;_EnableCam5;Enable Cam 5;32;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.RangedFloatNode;246;-1597.488,-118.5289;Inherit;False;Property;_EnableCam4;Enable Cam 4;36;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector3Node;82;-2355.087,592.1214;Inherit;False;Property;_Camera6Position;Camera 6 Position;23;0;Create;True;0;0;0;False;0;False;0,0,0;2,1.5,-1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;92;-1365.2,-589.9842;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.TexturePropertyNode;265;-2582.994,-892.0739;Inherit;True;Property;_Depth1;Depth 1;40;0;Create;True;0;0;0;False;0;False;None;0146383e3995643be92047c1c3fd405d;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode;694;-2574.762,-600.5599;Inherit;True;Property;_Depth2;Depth 2;41;0;Create;True;0;0;0;False;0;False;None;ba859147f617041a6a4f2a0904ac9d5a;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode;696;-2586.783,-24.54364;Inherit;True;Property;_Depth4;Depth 4;43;0;Create;True;0;0;0;False;0;False;None;211adf7b876d24960ad28072971e12f9;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.TexturePropertyNode;12;-1947.834,-50.92311;Inherit;True;Property;_Viewport4;Viewport 4;16;0;Create;True;0;0;0;False;0;False;05734752a4255405aa18e1191e950651;05734752a4255405aa18e1191e950651;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.RangedFloatNode;244;-1600.9,-682.9179;Inherit;False;Property;_EnableCam2;Enable Cam 2;34;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleAddOpNode;36;-217.1789,-438.396;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;249;-1357.599,512.979;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.FunctionNode;711;-1688.627,-306.8883;Inherit;False;SingleCameraMapping;1;;34;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.FunctionNode;712;-1702.503,-891.2581;Inherit;False;SingleCameraMapping;1;;35;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.FunctionNode;713;-1703.988,-34.63258;Inherit;False;SingleCameraMapping;1;;36;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.FunctionNode;714;-1702.781,-599.5066;Inherit;False;SingleCameraMapping;1;;37;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;258;-1207.081,872.4131;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.Vector3Node;73;-2362.968,-312.9946;Inherit;False;Property;_Camera3Position;Camera 3 Position;21;0;Create;True;0;0;0;False;0;False;0,0,0;-2,1.5,1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;67;-2150.972,-602.8923;Inherit;False;Property;_Camera2Rotation;Camera 2 Rotation;33;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,60,-4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.TexturePropertyNode;695;-2592.232,-313.2934;Inherit;True;Property;_Depth3;Depth 3;45;0;Create;True;0;0;0;False;0;False;None;8a69cc9b134364ad8871657d283a82da;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
 Node;AmplifyShaderEditor.SimpleDivideOpNode;84;-417.6054,-110.4605;Inherit;False;2;0;COLOR;0,0,0,0;False;1;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.RangedFloatNode;246;-1597.488,-118.5289;Inherit;False;Property;_EnableCam4;Enable Cam 4;39;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;247;-1597.488,174.7489;Inherit;False;Property;_EnableCam5;Enable Cam 5;35;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;92;-1365.2,-589.9842;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;258;-1207.081,872.4131;Inherit;False;2;2;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.Vector3Node;82;-2355.087,592.1214;Inherit;False;Property;_Camera6Position;Camera 6 Position;26;0;Create;True;0;0;0;False;0;False;0,0,0;2,1.5,-1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;249;-1357.599,512.979;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;244;-1600.9,-682.9179;Inherit;False;Property;_EnableCam2;Enable Cam 2;37;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.TexturePropertyNode;12;-1947.834,-50.92311;Inherit;True;Property;_Viewport4;Viewport 4;19;0;Create;True;0;0;0;False;0;False;05734752a4255405aa18e1191e950651;05734752a4255405aa18e1191e950651;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;696;-2586.783,-24.54364;Inherit;True;Property;_Depth4;Depth 4;46;0;Create;True;0;0;0;False;0;False;None;211adf7b876d24960ad28072971e12f9;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;694;-2574.762,-600.5599;Inherit;True;Property;_Depth2;Depth 2;44;0;Create;True;0;0;0;False;0;False;None;ba859147f617041a6a4f2a0904ac9d5a;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;265;-2582.994,-892.0739;Inherit;True;Property;_Depth1;Depth 1;43;0;Create;True;0;0;0;False;0;False;None;0146383e3995643be92047c1c3fd405d;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.SimpleAddOpNode;36;-217.1789,-438.396;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
+Node;AmplifyShaderEditor.FunctionNode;717;-1706.439,256.9467;Inherit;False;SingleCameraMapping;1;;50;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
+Node;AmplifyShaderEditor.FunctionNode;718;-1702.044,604.3686;Inherit;False;SingleCameraMapping;1;;52;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
+Node;AmplifyShaderEditor.FunctionNode;719;-1702.781,-599.5066;Inherit;False;SingleCameraMapping;1;;54;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
+Node;AmplifyShaderEditor.FunctionNode;720;-1703.988,-34.63258;Inherit;False;SingleCameraMapping;1;;56;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
+Node;AmplifyShaderEditor.TexturePropertyNode;16;-1937.6,579.0958;Inherit;True;Property;_Viewport6;Viewport 6;21;0;Create;True;0;0;0;False;0;False;3d7039e2d91fd44f68f4f05c291fb0a7;3d7039e2d91fd44f68f4f05c291fb0a7;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.Vector3Node;73;-2362.968,-312.9946;Inherit;False;Property;_Camera3Position;Camera 3 Position;24;0;Create;True;0;0;0;False;0;False;0,0,0;-2,1.5,1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.RangedFloatNode;245;-1577.029,-387.9352;Inherit;False;Property;_EnableCam3;Enable Cam 3;38;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleAddOpNode;83;-678.2205,-347.7461;Inherit;False;7;7;0;FLOAT;0;False;1;FLOAT;0;False;2;FLOAT;0;False;3;FLOAT;0;False;4;FLOAT;0;False;5;FLOAT;0;False;6;FLOAT;0;False;1;FLOAT;0
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;95;-1368.823,256.7666;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.Vector3Node;81;-2157.047,590.3024;Inherit;False;Property;_Camera6Rotation;Camera 6 Rotation;29;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,300,4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;97;-268.5599,-239.8742;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
-Node;AmplifyShaderEditor.Vector3Node;21;-2149.21,-899.2417;Inherit;False;Property;_Camera1Rotation;Camera 1 Rotation;26;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;21;-2149.21,-899.2417;Inherit;False;Property;_Camera1Rotation;Camera 1 Rotation;29;0;Create;True;0;0;0;False;0;False;0,0,0;0,0,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;91;-1363.246,-885.668;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.RangedFloatNode;255;-1484.693,846.8955;Inherit;False;Property;_EmptyWeight;EmptyWeight;38;0;Create;True;0;0;0;False;0;False;0.01;0.01;0;1;0;1;FLOAT;0
+Node;AmplifyShaderEditor.RangedFloatNode;255;-1484.693,846.8955;Inherit;False;Property;_EmptyWeight;EmptyWeight;41;0;Create;True;0;0;0;False;0;False;0.01;0.01;0;1;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;254;-1360.872,-977.3534;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;252;-1360.8,-394.2994;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;93;-1363.588,-301.5157;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.Vector3Node;80;-2365.407,264.4083;Inherit;False;Property;_Camera5Position;Camera 5 Position;19;0;Create;True;0;0;0;False;0;False;0,0,0;2,1.5,1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.RangedFloatNode;243;-1597.489,-988.1314;Inherit;False;Property;_EnableCam1;Enable Cam 1;33;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector3Node;80;-2365.407,264.4083;Inherit;False;Property;_Camera5Position;Camera 5 Position;22;0;Create;True;0;0;0;False;0;False;0,0,0;2,1.5,1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.RangedFloatNode;243;-1597.489,-988.1314;Inherit;False;Property;_EnableCam1;Enable Cam 1;36;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.WorldNormalVector;369;-2993.659,89.48102;Inherit;False;False;1;0;FLOAT3;0,0,1;False;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.WorldPosInputsNode;18;-2963.493,-361.9537;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;95;-1368.823,256.7666;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;94;-1366.138,-33.59846;Inherit;False;3;3;0;FLOAT;0;False;1;COLOR;0,0,0,0;False;2;FLOAT;0;False;1;COLOR;0
-Node;AmplifyShaderEditor.Vector3Node;20;-2341.182,-898.6359;Inherit;False;Property;_Camera1Position;Camera 1 Position;24;0;Create;True;0;0;0;False;0;False;0,0,0;0,1,-2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.RangedFloatNode;248;-1597.941,519.8408;Inherit;False;Property;_EnableCam6;Enable Cam 6;37;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
-Node;AmplifyShaderEditor.Vector3Node;68;-2342.944,-602.2865;Inherit;False;Property;_Camera2Position;Camera 2 Position;22;0;Create;True;0;0;0;False;0;False;0,0,0;-2,1.5,-1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.ColorNode;257;-1433.783,930.8633;Inherit;False;Property;_EmptyColor;EmptyColor;39;0;Create;True;0;0;0;False;0;False;0.6226415,0.6226415,0.6226415,0;0.3962252,0.3962252,0.3962252,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.TexturePropertyNode;8;-1944.627,-599.8073;Inherit;True;Property;_Viewport2;Viewport 2;14;0;Create;True;0;0;0;False;0;False;0650854c277ec45588530cd7c0d9cb47;0650854c277ec45588530cd7c0d9cb47;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.Vector3Node;78;-2155.074,-30.90819;Inherit;False;Property;_Camera4Rotation;Camera 4 Rotation;27;0;Create;True;0;0;0;False;0;False;0,0,0;11.32999,180,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.TexturePropertyNode;10;-1944.042,-322.9174;Inherit;True;Property;_Viewport3;Viewport 3;15;0;Create;True;0;0;0;False;0;False;a2aa7782c388b495d9d19bb8bfec8098;a2aa7782c388b495d9d19bb8bfec8098;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.FunctionNode;716;-1706.439,256.9467;Inherit;False;SingleCameraMapping;1;;39;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
-Node;AmplifyShaderEditor.TexturePropertyNode;698;-2585.979,593.1341;Inherit;True;Property;_Depth6;Depth 6;45;0;Create;True;0;0;0;False;0;False;None;008ecc74e3a374dc7b0378989802d355;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
-Node;AmplifyShaderEditor.NormalVertexDataNode;58;-2966.685,-58.41299;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
-Node;AmplifyShaderEditor.Vector3Node;72;-2164.929,-314.8136;Inherit;False;Property;_Camera3Rotation;Camera 3 Rotation;25;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,120,-4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.Vector3Node;79;-2167.367,262.5893;Inherit;False;Property;_Camera5Rotation;Camera 5 Rotation;28;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,240,4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.Vector3Node;77;-2353.114,-29.08919;Inherit;False;Property;_Camera4Position;Camera 4 Position;20;0;Create;True;0;0;0;False;0;False;0,0,0;0,1.5,2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
-Node;AmplifyShaderEditor.SimpleMultiplyOpNode;251;-1362.371,-125.649;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector3Node;20;-2341.182,-898.6359;Inherit;False;Property;_Camera1Position;Camera 1 Position;27;0;Create;True;0;0;0;False;0;False;0,0,0;0,1,-2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.WorldPosInputsNode;18;-2963.493,-361.9537;Inherit;False;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;68;-2342.944,-602.2865;Inherit;False;Property;_Camera2Position;Camera 2 Position;25;0;Create;True;0;0;0;False;0;False;0,0,0;-2,1.5,-1;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.Vector3Node;81;-2157.047,590.3024;Inherit;False;Property;_Camera6Rotation;Camera 6 Rotation;32;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,300,4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.TexturePropertyNode;5;-1941.323,-901.144;Inherit;True;Property;_Viewport1;Viewport 1;0;0;Create;True;0;0;0;False;0;False;6e525e0933ba04ebe9d0f3860234333d;6e525e0933ba04ebe9d0f3860234333d;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.SimpleMultiplyOpNode;251;-1362.371,-125.649;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector3Node;77;-2353.114,-29.08919;Inherit;False;Property;_Camera4Position;Camera 4 Position;23;0;Create;True;0;0;0;False;0;False;0,0,0;0,1.5,2;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.RangedFloatNode;248;-1597.941,519.8408;Inherit;False;Property;_EnableCam6;Enable Cam 6;40;1;[Toggle];Create;True;0;0;0;False;0;False;1;1;0;0;0;1;FLOAT;0
+Node;AmplifyShaderEditor.Vector3Node;79;-2167.367,262.5893;Inherit;False;Property;_Camera5Rotation;Camera 5 Rotation;31;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,240,4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.FunctionNode;722;-1702.503,-891.2581;Inherit;False;SingleCameraMapping;1;;60;c8b5fbd685dd64b198a955213c46363d;0;7;55;SAMPLER2D;;False;79;SAMPLER2D;;False;56;FLOAT3;0,0,0;False;57;FLOAT3;0,0,0;False;59;FLOAT3;0,0,0;False;60;FLOAT3;0,0,0;False;61;FLOAT3;0,0,0;False;2;FLOAT;62;COLOR;0
+Node;AmplifyShaderEditor.NormalVertexDataNode;58;-2966.685,-58.41299;Inherit;False;0;5;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.TexturePropertyNode;698;-2585.979,593.1341;Inherit;True;Property;_Depth6;Depth 6;48;0;Create;True;0;0;0;False;0;False;None;008ecc74e3a374dc7b0378989802d355;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.TexturePropertyNode;10;-1944.042,-322.9174;Inherit;True;Property;_Viewport3;Viewport 3;18;0;Create;True;0;0;0;False;0;False;a2aa7782c388b495d9d19bb8bfec8098;a2aa7782c388b495d9d19bb8bfec8098;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.Vector3Node;78;-2155.074,-30.90819;Inherit;False;Property;_Camera4Rotation;Camera 4 Rotation;30;0;Create;True;0;0;0;False;0;False;0,0,0;11.32999,180,0;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
+Node;AmplifyShaderEditor.TexturePropertyNode;8;-1944.627,-599.8073;Inherit;True;Property;_Viewport2;Viewport 2;17;0;Create;True;0;0;0;False;0;False;0650854c277ec45588530cd7c0d9cb47;0650854c277ec45588530cd7c0d9cb47;False;white;Auto;Texture2D;-1;0;2;SAMPLER2D;0;SAMPLERSTATE;1
+Node;AmplifyShaderEditor.ColorNode;257;-1433.783,930.8633;Inherit;False;Property;_EmptyColor;EmptyColor;42;0;Create;True;0;0;0;False;0;False;0.6226415,0.6226415,0.6226415,0;0.3962252,0.3962252,0.3962252,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.Vector3Node;72;-2164.929,-314.8136;Inherit;False;Property;_Camera3Rotation;Camera 3 Rotation;28;0;Create;True;0;0;0;False;0;False;0,0,0;11.33,120,-4.353713E-07;0;4;FLOAT3;0;FLOAT;1;FLOAT;2;FLOAT;3
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;0;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ExtraPrePass;0;0;ExtraPrePass;5;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;0;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;1;0,0;Float;False;True;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;TextureMapping6;2992e84f91cbeb14eab234972e07ea9d;True;Forward;0;1;Forward;8;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;True;1;1;False;-1;0;False;-1;1;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;True;False;255;False;-1;255;False;-1;255;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;7;False;-1;1;False;-1;1;False;-1;1;False;-1;False;True;1;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=UniversalForward;False;False;0;Hidden/InternalErrorShader;0;0;Standard;22;Surface;0;  Blend;0;Two Sided;1;Cast Shadows;1;  Use Shadow Threshold;0;Receive Shadows;1;GPU Instancing;1;LOD CrossFade;0;Built-in Fog;0;DOTS Instancing;0;Meta Pass;0;Extra Pre Pass;0;Tessellation;0;  Phong;0;  Strength;0.5,False,-1;  Type;0;  Tess;16,False,-1;  Min;10,False,-1;  Max;25,False,-1;  Edge Length;16,False,-1;  Max Displacement;25,False,-1;Vertex Position,InvertActionOnDeselection;1;0;5;False;True;True;True;False;False;;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;4;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
-Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;2;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;ShadowCaster;0;2;ShadowCaster;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=ShadowCaster;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
+Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;3;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;3;New Amplify Shader;2992e84f91cbeb14eab234972e07ea9d;True;DepthOnly;0;3;DepthOnly;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;True;17;d3d9;d3d11;glcore;gles;gles3;metal;vulkan;xbox360;xboxone;xboxseries;ps4;playstation;psp2;n3ds;wiiu;switch;nomrt;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;False;False;True;False;False;False;False;0;False;-1;False;False;False;False;False;False;False;False;False;True;1;False;-1;False;False;True;1;LightMode=DepthOnly;False;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 WireConnection;6;0;91;0
 WireConnection;6;1;92;0
 WireConnection;6;2;93;0
@@ -1135,59 +1153,59 @@ WireConnection;6;3;94;0
 WireConnection;6;4;95;0
 WireConnection;6;5;96;0
 WireConnection;6;6;258;0
-WireConnection;715;55;16;0
-WireConnection;715;79;698;0
-WireConnection;715;56;18;0
-WireConnection;715;57;37;0
-WireConnection;715;59;369;0
-WireConnection;715;60;81;0
-WireConnection;715;61;82;0
+WireConnection;721;55;10;0
+WireConnection;721;79;695;0
+WireConnection;721;56;18;0
+WireConnection;721;57;37;0
+WireConnection;721;59;369;0
+WireConnection;721;60;72;0
+WireConnection;721;61;73;0
 WireConnection;253;0;244;0
-WireConnection;253;1;714;62
-WireConnection;96;0;715;62
-WireConnection;96;1;715;0
+WireConnection;253;1;719;62
+WireConnection;96;0;718;62
+WireConnection;96;1;718;0
 WireConnection;96;2;248;0
 WireConnection;250;0;247;0
-WireConnection;250;1;716;62
-WireConnection;92;0;714;62
-WireConnection;92;1;714;0
-WireConnection;92;2;244;0
-WireConnection;36;0;712;0
-WireConnection;36;1;97;0
-WireConnection;249;0;248;0
-WireConnection;249;1;715;62
-WireConnection;711;55;10;0
-WireConnection;711;79;695;0
-WireConnection;711;56;18;0
-WireConnection;711;57;37;0
-WireConnection;711;59;369;0
-WireConnection;711;60;72;0
-WireConnection;711;61;73;0
-WireConnection;712;55;5;0
-WireConnection;712;79;265;0
-WireConnection;712;56;18;0
-WireConnection;712;57;37;0
-WireConnection;712;59;369;0
-WireConnection;712;60;21;0
-WireConnection;712;61;20;0
-WireConnection;713;55;12;0
-WireConnection;713;79;696;0
-WireConnection;713;56;18;0
-WireConnection;713;57;37;0
-WireConnection;713;59;369;0
-WireConnection;713;60;78;0
-WireConnection;713;61;77;0
-WireConnection;714;55;8;0
-WireConnection;714;79;694;0
-WireConnection;714;56;18;0
-WireConnection;714;57;37;0
-WireConnection;714;59;369;0
-WireConnection;714;60;67;0
-WireConnection;714;61;68;0
-WireConnection;258;0;255;0
-WireConnection;258;1;257;0
+WireConnection;250;1;717;62
 WireConnection;84;0;6;0
 WireConnection;84;1;83;0
+WireConnection;92;0;719;62
+WireConnection;92;1;719;0
+WireConnection;92;2;244;0
+WireConnection;258;0;255;0
+WireConnection;258;1;257;0
+WireConnection;249;0;248;0
+WireConnection;249;1;718;62
+WireConnection;36;0;722;0
+WireConnection;36;1;97;0
+WireConnection;717;55;14;0
+WireConnection;717;79;697;0
+WireConnection;717;56;18;0
+WireConnection;717;57;37;0
+WireConnection;717;59;369;0
+WireConnection;717;60;79;0
+WireConnection;717;61;80;0
+WireConnection;718;55;16;0
+WireConnection;718;79;698;0
+WireConnection;718;56;18;0
+WireConnection;718;57;37;0
+WireConnection;718;59;369;0
+WireConnection;718;60;81;0
+WireConnection;718;61;82;0
+WireConnection;719;55;8;0
+WireConnection;719;79;694;0
+WireConnection;719;56;18;0
+WireConnection;719;57;37;0
+WireConnection;719;59;369;0
+WireConnection;719;60;67;0
+WireConnection;719;61;68;0
+WireConnection;720;55;12;0
+WireConnection;720;79;696;0
+WireConnection;720;56;18;0
+WireConnection;720;57;37;0
+WireConnection;720;59;369;0
+WireConnection;720;60;78;0
+WireConnection;720;61;77;0
 WireConnection;83;0;254;0
 WireConnection;83;1;253;0
 WireConnection;83;2;252;0
@@ -1195,32 +1213,32 @@ WireConnection;83;3;251;0
 WireConnection;83;4;250;0
 WireConnection;83;5;249;0
 WireConnection;83;6;255;0
-WireConnection;95;0;716;62
-WireConnection;95;1;716;0
-WireConnection;95;2;247;0
 WireConnection;97;0;84;0
-WireConnection;91;0;712;62
-WireConnection;91;1;712;0
+WireConnection;91;0;722;62
+WireConnection;91;1;722;0
 WireConnection;91;2;243;0
 WireConnection;254;0;243;0
-WireConnection;254;1;712;62
+WireConnection;254;1;722;62
 WireConnection;252;0;245;0
-WireConnection;252;1;711;62
-WireConnection;93;0;711;62
-WireConnection;93;1;711;0
+WireConnection;252;1;721;62
+WireConnection;93;0;721;62
+WireConnection;93;1;721;0
 WireConnection;93;2;245;0
-WireConnection;94;0;713;62
-WireConnection;94;1;713;0
+WireConnection;95;0;717;62
+WireConnection;95;1;717;0
+WireConnection;95;2;247;0
+WireConnection;94;0;720;62
+WireConnection;94;1;720;0
 WireConnection;94;2;246;0
-WireConnection;716;55;14;0
-WireConnection;716;79;697;0
-WireConnection;716;56;18;0
-WireConnection;716;57;37;0
-WireConnection;716;59;369;0
-WireConnection;716;60;79;0
-WireConnection;716;61;80;0
 WireConnection;251;0;246;0
-WireConnection;251;1;713;62
+WireConnection;251;1;720;62
+WireConnection;722;55;5;0
+WireConnection;722;79;265;0
+WireConnection;722;56;18;0
+WireConnection;722;57;37;0
+WireConnection;722;59;369;0
+WireConnection;722;60;21;0
+WireConnection;722;61;20;0
 WireConnection;1;2;84;0
 ASEEND*/
-//CHKSM=1C2934C87887914B7AF238487E7A2E4478008EBE
+//CHKSM=D3F83C0C10599B28746EF6F35B65E3DE0419643D

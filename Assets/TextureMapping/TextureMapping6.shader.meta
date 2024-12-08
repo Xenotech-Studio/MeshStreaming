@@ -3,9 +3,8 @@ guid: b5eda6ceebf444f4fb2c87c3ba2d9869
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _Viewport1: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
-  - _Viewport3: {fileID: 8400000, guid: a2aa7782c388b495d9d19bb8bfec8098, type: 2}
   - _Viewport4: {fileID: 8400000, guid: 05734752a4255405aa18e1191e950651, type: 2}
+  - _Viewport5: {fileID: 8400000, guid: 92a22c3073f174e259ea57f2a8403d5e, type: 2}
   - _Viewport6: {fileID: 8400000, guid: 3d7039e2d91fd44f68f4f05c291fb0a7, type: 2}
   nonModifiableTextures: []
   userData: 
