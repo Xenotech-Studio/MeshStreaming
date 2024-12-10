@@ -1,0 +1,63 @@
+// Assume this Compute Shader is attached to Unity's Compute Shader asset
+#pragma kernel CSMain
+
+// Texture containing the depth from the camera
+RWTexture2D<uint> Result;  // 使用 uint 来存储深度信息
+Texture2D<float> Source;
+
+// Camera parameters and transformations
+float cam1F;
+float outF;
+float4x4 cam1R;
+float3 cam1T;
+float4x4 outR;
+float3 outT;
+
+// Helper to convert depth from float to uint
+uint FloatToUint(float value) {
+    return (uint)(value * 1000); // 这里的1000是一个示例缩放因子，可根据深度值的实际范围进行调整
+}
+
+// Helper to convert depth from uint to float
+float UintToFloat(uint value) {
+    return (float)value / 1000.0;
+}
+
+[numthreads(8, 8, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    uint widthA, heightA;
+    Source.GetDimensions(widthA, heightA);
+    int2 uvA = int2(id.xy);
+
+    if (uvA.x >= widthA || uvA.y >= heightA) return;
+
+    // Load depth from the depth texture
+    float depth = Source.Load(int3(uvA, 0));
+
+    // Convert depth to uint for atomic operations
+    uint depthUint = FloatToUint(depth);
+
+    // Calculate the position of the pixel in Camera 1's coordinate system
+    float2 uvA_normalized = (float2(uvA) / float2(widthA, heightA)) - 0.5;
+    float3 cameraPosA = float3(depth * uvA_normalized.x / cam1F, 
+                               depth * uvA_normalized.y / cam1F, 
+                               depth);
+
+    // Convert from Camera 1's coordinate system to world coordinates
+    float3 worldPos = mul(cam1R, cameraPosA) + cam1T;
+
+    // Convert from world coordinates to Output Camera's coordinate system
+    float3 outCameraPos = mul(outR, worldPos - outT);
+
+    // Calculate the UV coordinate on the output texture
+    float2 uvB = (outCameraPos.xy / outCameraPos.z) * outF + 0.5;
+
+    if (uvB.x >= 0.0 && uvB.x <= 1.0 && uvB.y >= 0.0 && uvB.y <= 1.0)
+    {
+        int2 uvB_int = int2(uvB * float2(widthA, heightA));
+
+        // Use atomic min to ensure that the smallest depth is written
+        InterlockedMin(Result[uvB_int], depthUint);
+    }
+}
