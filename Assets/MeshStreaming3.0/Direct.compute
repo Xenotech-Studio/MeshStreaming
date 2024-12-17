@@ -1,0 +1,27 @@
+// Assume this Compute Shader is attached to Unity's Compute Shader asset
+#pragma kernel CSMain
+
+// Input texture storing color data
+Texture2D<float4> Source;
+
+// Output texture for color data
+RWTexture2D<float4> Result;
+
+[numthreads(8, 8, 1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    uint width, height;
+    Source.GetDimensions(width, height);
+    int2 uv = int2(id.xy);
+
+    // Ensure we do not exceed the texture bounds
+    if (uv.x >= width || uv.y >= height) return;
+
+    // Read color value from the input texture
+    float4 color = Source.Load(int3(uv, 0));
+
+    // Write color to the output texture
+    Result[uv] = color;
+
+    Result[uv] = float4(200, 0, 0, 1);
+}

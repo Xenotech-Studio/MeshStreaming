@@ -27,10 +27,6 @@ public class PixelMapper : MonoBehaviour
 
         int kernelHandle = shader.FindKernel("CSMain");
 
-        resultTexture = new RenderTexture(sourceTexture.width, sourceTexture.height, 0, RenderTextureFormat.RFloat);
-        resultTexture.enableRandomWrite = true;
-        resultTexture.Create();
-
         shader.SetTexture(kernelHandle, "Result", resultTexture);
         shader.SetTexture(kernelHandle, "Source", sourceTexture);
 

@@ -26,7 +26,7 @@ float UintToFloat(uint value) {
 [numthreads(8, 8, 1)]
 void CSMain(uint3 id : SV_DispatchThreadID)
 {
-    uint widthA, heightA;
+    /*uint widthA, heightA;
     Source.GetDimensions(widthA, heightA);
     int2 uvA = int2(id.xy);
 
@@ -59,5 +59,7 @@ void CSMain(uint3 id : SV_DispatchThreadID)
 
         // Use atomic min to ensure that the smallest depth is written
         InterlockedMin(Result[uvB_int], depthUint);
-    }
+    }*/
+
+    Result[id.xy] = float4(0, 1, 0, 1);
 }
