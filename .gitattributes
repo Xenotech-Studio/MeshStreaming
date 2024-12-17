@@ -64,3 +64,4 @@
 Assets/TextMesh[[:space:]]Pro/Fonts/Alibaba-PuHuiTi.asset filter=lfs diff=lfs merge=lfs -text
 Assets/TextMesh[[:space:]]Pro/Fonts/Alibaba-PuHuiTi[[:space:]]outline.asset filter=lfs diff=lfs merge=lfs -text
 Assets/Art/Fonts/站酷快乐体/站酷快乐体2016修订版[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
+dnn_model_2_0_op11.onnx filter=lfs diff=lfs merge=lfs -text
