@@ -12,6 +12,6 @@ public class Test : MonoBehaviour
     {
         KinectInterop.SensorData sensorData =  KinectManager.GetSensorData(0);
         
-        Debug.Log(sensorData.colorImageTexture==null?"null":"not null");
+        Debug.Log(sensorData.depthImageTexture==null?"null":"not null");
     }
 }
