@@ -469,8 +469,8 @@ MonoBehaviour:
   syncMultiCamFrames: 0
   startDepthSensors: 1
   dontDestroyAcrossScenes: 0
-  getDepthFrames: 1
-  getColorFrames: 0
+  getDepthFrames: 2
+  getColorFrames: 2
   getInfraredFrames: 0
   getPoseFrames: 0
   getBodyFrames: 3
@@ -492,7 +492,7 @@ MonoBehaviour:
   playerCalibrationPose: 0
   userManager: {fileID: 0}
   gestureManager: {fileID: 0}
-  displayImages: 01010000
+  displayImages: 0100000002000000
   displayImageWidthPercent: 0.2
   statusInfoText: {fileID: 140217962}
   consoleLogMessages: 1
@@ -518,6 +518,7 @@ Transform:
   - {fileID: 1961302985}
   - {fileID: 2064048985}
   - {fileID: 1332047073}
+  - {fileID: 1252956545}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &720034755
@@ -879,6 +880,37 @@ MonoBehaviour:
   forwardOffset: 0
   useUnscaledTime: 0
   boneColliderRadius: 0
+--- !u!1 &1252956544
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1252956545}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1252956545
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1252956544}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 659385098}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1332047072
 GameObject:
   m_ObjectHideFlags: 0
