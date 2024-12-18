@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Depth 1 Show
-  m_Shader: {fileID: 4800000, guid: ad8ede2e619c544889710d36464827a3, type: 3}
+  m_Name: DualImageCorrection
+  m_Shader: {fileID: 4800000, guid: 82e3273468544db8bd00cb55b3ad30c2, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -23,18 +23,15 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _Texture0:
-        m_Texture: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
+    - _ColorTex:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _texcoord:
+    - _DepthTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats:
-    - _Alpha: 1
-    - _AlphaCutoff: 0.5
-    m_Colors:
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    m_Floats: []
+    m_Colors: []
   m_BuildTextureStacks: []
