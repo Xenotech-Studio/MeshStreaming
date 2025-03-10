@@ -187,7 +187,7 @@ Material:
     - _Claming: 0
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _ClippingDepth: 1.063
+    - _ClippingDepth: 1
     - _Cull: 2
     - _Cutoff: 0.5
     - _DepthB: 0.02226743
@@ -239,7 +239,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Camera1Position: {r: -0.026, g: 1.63, b: -1.063, a: 0}
+    - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Rotation: {r: -0, g: 0, b: 0, a: 0}
     - _Camera2Position: {r: -2, g: 1.884, b: -1, a: 0}
     - _Camera2Rotation: {r: 11.329995, g: 60.000004, b: -0.00000043537133, a: 0}
