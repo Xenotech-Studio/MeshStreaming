@@ -52,9 +52,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _CameraF: 1.15
+    - _CameraF: 1.203
     - _DepthB: 0.022267
     - _DepthK: 0.2966
+    - _InputColorCameraF: 1.1543
     - _MaxDepth: 1.3309573
     - _MaxDepthDelta: 1.5
     - _Sub1: 1
@@ -73,7 +74,9 @@ Material:
     - _UseColor_1: 0
     - _UseColor_2: 1
     m_Colors:
-    - _Camera1Position: {r: -0.026, g: 1.63, b: -1.063, a: 0}
+    - _CamOutPosition: {r: 0.361, g: 1.8, b: -0.531, a: 0}
+    - _CamOutRotation: {r: -0, g: 325.7902, b: 0, a: 0}
+    - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation1: {r: 0, g: 0, b: 0, a: 0}
@@ -82,6 +85,8 @@ Material:
     - _Camera2Rotation: {r: -0, g: 315, b: -0, a: 0}
     - _Camera2Rotation1: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutCamPos: {r: 0, g: 0, b: 0, a: 0}
+    - _OutCamRot: {r: 0, g: 0, b: 0, a: 0}
     - _PositionOffset: {r: 0, g: 0, b: 0, a: 0}
     - _PositionOffset1: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []

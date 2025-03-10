@@ -11635,7 +11635,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1092441571
 Transform:
   m_ObjectHideFlags: 0
@@ -12023,8 +12023,9 @@ MonoBehaviour:
   - {fileID: 809483828}
   - {fileID: 910369449}
   OutputOrigin: {fileID: 1264992370}
-  NeedOutCamPoseMaterial: {fileID: 2100000, guid: 3c0bcb7575c254feda220445f494df68,
-    type: 2}
+  NeedOutCamPoseMaterials:
+  - {fileID: 2100000, guid: 3c0bcb7575c254feda220445f494df68, type: 2}
+  - {fileID: 2100000, guid: 7e4bc616a01904f27a7aa1acc5860093, type: 2}
   OutCam: {fileID: 2142458985}
 --- !u!1 &1287657777
 GameObject:
@@ -13081,7 +13082,7 @@ Transform:
   m_GameObject: {fileID: 1749334846}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0.117}
+  m_LocalPosition: {x: -0.025, y: -0, z: 0.153}
   m_LocalScale: {x: 0.39896, y: 0.39896, z: 0.39896}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14040,8 +14041,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142458981}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0.35561728, z: -0, w: 0.9346317}
-  m_LocalPosition: {x: 0.872, y: 1.76, z: -0.98}
+  m_LocalRotation: {x: -0, y: -0.2941221, z: -0, w: 0.95576787}
+  m_LocalPosition: {x: 0.361, y: 1.8, z: -0.531}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

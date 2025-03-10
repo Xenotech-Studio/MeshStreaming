@@ -13,7 +13,7 @@ public class NovelView : MonoBehaviour
 
     public Transform OutputOrigin;
 
-    public Material NeedOutCamPoseMaterial;
+    public Material[] NeedOutCamPoseMaterials;
     public Camera OutCam;
 
     // Update is called once per frame
@@ -32,7 +32,10 @@ public class NovelView : MonoBehaviour
             material.SetVector("_PositionOffset", OutputOrigin.position);
         }
 
-        NeedOutCamPoseMaterial.SetVector("_CamOutPosition", OutCam.transform.position);
-        NeedOutCamPoseMaterial.SetVector("_CamOutRotation", OutCam.transform.rotation.eulerAngles);
+        foreach (var needOutCamPoseMaterial in NeedOutCamPoseMaterials)
+        {
+            needOutCamPoseMaterial.SetVector("_CamOutPosition", OutCam.transform.position);
+            needOutCamPoseMaterial.SetVector("_CamOutRotation", OutCam.transform.rotation.eulerAngles);
+        }
     }
 }
