@@ -1,15 +1,128 @@
-// Compute Shader - DepthToRed
 #pragma kernel CSMain
 
-// Texture input and output
-RWTexture2D<float4> Result; // Output texture
-Texture2D<float> depthTexture : register(t0); // Input depth texture as float
+// 输出纹理：存储计算结果
+RWTexture2D<float4> Result;
+// 输入深度纹理（深度存储在红色通道）
+Texture2D<float> depthTexture : register(t0);
 
-[numthreads(16, 16, 1)]
-void CSMain (uint3 id : SV_DispatchThreadID) {
-    // Get depth value from the depth texture (in float format)
-    float depth = depthTexture[id.xy]; // Read depth value directly
+// 相机和图像参数
+uniform float3 inputCameraPos;
+uniform float3 outputCameraPos;
+uniform float3 inputCameraRotation;
+uniform float3 outputCameraRotation;
+uniform float fovInput;
+uniform float fovOutput;
+uniform int imageWidth;
+uniform int imageHeight;
 
-    // Calculate the RGB color where the depth value is displayed in the red channel
-    Result[id.xy] = float4(depth, 0.0f, 0.0f, 1.0f);
+// 新的输出颜色
+uniform float4 outputColor;
+
+// Splat 半径（默认 3）
+uniform int splatRadius;
+
+// 根据 Euler 角生成旋转矩阵
+float3x3 EulerToRotationMatrix(float3 euler)
+{
+    float3 rad = euler * (3.14159265 / 180.0);
+    float cx = cos(rad.x);
+    float sx = sin(rad.x);
+    float cy = cos(rad.y);
+    float sy = sin(rad.y);
+    float cz = cos(rad.z);
+    float sz = sin(rad.z);
+
+    float3x3 rx = float3x3( 1,    0,   0,
+                            0,   cx, -sx,
+                            0,   sx,  cx);
+        
+    float3x3 ry = float3x3( cy,   0,   sy,
+                            0,    1,    0,
+                           -sy,   0,   cy);
+       
+    float3x3 rz = float3x3( cz, -sz,  0,
+                            sz,  cz,  0,
+                            0,    0,  1);
+
+    return mul(rz, mul(ry, rx));
+}
+
+[numthreads(16,16,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    if ((int)id.x >= imageWidth || (int)id.y >= imageHeight)
+        return;
+
+    // 读取输入深度值（r 通道）
+    float r_in = depthTexture[int2(id.xy)];
+    if (r_in == 0.0)
+        return;
+
+    // 计算实际深度：d_in = 0.2980392 / r_in
+    float d_in = 0.2980392 / r_in;
+
+    
+    float4 outColor = outputColor;
+    //if(d_in < 1) outColor = float4(1,0,0,1);
+
+    // 将输入坐标转换为归一化屏幕坐标（范围 [-1,1]）
+    float u = ((float)id.x + 0.5 - (float)imageWidth * 0.5) / ((float)imageWidth * 0.5) / 2;
+    float v = ((float)id.y + 0.5 - (float)imageHeight * 0.5) / ((float)imageHeight * 0.5) / 2;
+
+    // 重构输入相机空间中的三维坐标
+    float3 P_in = float3(u * d_in * fovInput, v * d_in * fovInput, d_in);
+
+    // 从输入相机空间转换到世界坐标
+    float3x3 R_in = EulerToRotationMatrix(inputCameraRotation);
+    float3 P_world = inputCameraPos + mul(R_in, P_in);
+
+    // 从世界坐标转换到输出相机坐标
+    float3x3 R_out = EulerToRotationMatrix(outputCameraRotation);
+    float3x3 R_out_inv = transpose(R_out);
+    float3 P_out = mul(R_out_inv, (P_world - outputCameraPos));
+
+    //P_out= P_world - outputCameraPos;
+
+    // 如果深度在输出相机后方，则跳过
+    if (P_out.z <= 0.0)
+        return;
+
+    // 透视投影：将相机坐标投影到屏幕空间
+    float u_out = (P_out.x / P_out.z) * fovOutput;
+    float v_out = (P_out.y / P_out.z) * fovOutput;
+
+    // 将归一化屏幕坐标映射回输出图像像素坐标
+    float x_out = (u_out*2 + 1.0) * 0.5 * (float)imageWidth;
+    float y_out = (v_out*2 + 1.0) * 0.5 * (float)imageHeight;
+
+    // 计算输出深度
+    float d_out = P_out.z;
+
+    // 反算深度值：r_out = 0.2980392 / d_out
+    float r_out = (d_out > 0.0) ? (0.2980392 / d_out) : 0.0;
+
+    // 计算输出颜色
+    float4 finalColor = r_out * outColor;
+
+    // 用 splat 半径进行深度融合
+    for (int dx = -splatRadius; dx <= splatRadius; dx++)
+    {
+        for (int dy = -splatRadius; dy <= splatRadius; dy++)
+        {
+            int2 outCoord = int2(x_out + dx, y_out + dy);
+
+            // 判断是否在图像范围内
+            if (outCoord.x >= 0 && outCoord.x < imageWidth && outCoord.y >= 0 && outCoord.y < imageHeight)
+            {
+                // 获取已有深度值
+                float r_existing = Result[outCoord].r;
+
+                // 如果新的深度值更近（更大 r 值），则更新输出
+                if (r_out > r_existing)
+                {
+                    Result[outCoord] = finalColor;
+                }
+            }
+        }
+    }
 }
