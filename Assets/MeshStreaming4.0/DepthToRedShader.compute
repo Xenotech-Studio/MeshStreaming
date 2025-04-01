@@ -1,0 +1,15 @@
+// Compute Shader - DepthToRed
+#pragma kernel CSMain
+
+// Texture input and output
+RWTexture2D<float4> Result; // Output texture
+Texture2D<float> depthTexture : register(t0); // Input depth texture as float
+
+[numthreads(16, 16, 1)]
+void CSMain (uint3 id : SV_DispatchThreadID) {
+    // Get depth value from the depth texture (in float format)
+    float depth = depthTexture[id.xy]; // Read depth value directly
+
+    // Calculate the RGB color where the depth value is displayed in the red channel
+    Result[id.xy] = float4(depth, 0.0f, 0.0f, 1.0f);
+}
