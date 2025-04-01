@@ -4,6 +4,7 @@ ShaderImporter:
   externalObjects: {}
   defaultTextures:
   - _D_true: {fileID: 8400000, guid: 0146383e3995643be92047c1c3fd405d, type: 2}
+  - _RGB_1: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

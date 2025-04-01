@@ -123,7 +123,7 @@ void CSMain(uint3 id : SV_DispatchThreadID)
     if (r_in1 != 0.0)
     {
         // 计算实际深度：d_in = 0.2980392 / r_in
-        float d_in1 = 0.2980392 / r_in1;
+        float d_in1 = 0.2980392 / r_in1 + 0.01;
         
         // 使用 inputCamera1 的深度
         ProcessDepth(d_in1, id, r_in1, outputColor, inputCameraPos1, inputCameraRotation1, fovInput1);
@@ -133,7 +133,7 @@ void CSMain(uint3 id : SV_DispatchThreadID)
     if (r_in2 != 0.0)
     {
         // 计算实际深度：d_in = 0.2980392 / r_in
-        float d_in2 = 0.2980392 / r_in2;
+        float d_in2 = 0.2980392 / r_in2 + 0.01;
         
         // 使用 inputCamera2 的深度
         ProcessDepth(d_in2, id, r_in2, outputColor, inputCameraPos2, inputCameraRotation2, fovInput1);
