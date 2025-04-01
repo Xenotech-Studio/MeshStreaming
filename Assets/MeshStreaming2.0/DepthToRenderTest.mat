@@ -79,8 +79,8 @@ Material:
     - _UseColor_1: 0
     - _UseColor_2: 0
     m_Colors:
-    - _CamOutPosition: {r: 0.361, g: 1.8, b: -0.531, a: 0}
-    - _CamOutRotation: {r: -0, g: 325.7902, b: 0, a: 0}
+    - _CamOutPosition: {r: 0.112, g: 1.8, b: -0.856, a: 0}
+    - _CamOutRotation: {r: -0, g: 352.54572, b: 0, a: 0}
     - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}
@@ -89,7 +89,7 @@ Material:
     - _Camera2Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera2Rotation: {r: -0, g: 315, b: -0, a: 0}
     - _Camera2Rotation1: {r: 0, g: 0, b: 0, a: 0}
-    - _Color0: {r: 0.34905648, g: 0.34905648, b: 0.34905648, a: 0}
+    - _Color0: {r: 0.34905645, g: 0.34905645, b: 0.34905645, a: 0}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
     - _PositionOffset: {r: 0, g: 0, b: 0, a: 0}
     - _PositionOffset1: {r: 0, g: 0, b: 0, a: 0}
