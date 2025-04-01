@@ -3,14 +3,17 @@
 // 输出纹理：存储计算结果
 RWTexture2D<float4> Result;
 // 输入深度纹理（深度存储在红色通道）
-Texture2D<float> depthTexture : register(t0);
+Texture2D<float> depthTexture1 : register(t0);
+Texture2D<float> depthTexture2 : register(t1);
 
 // 相机和图像参数
-uniform float3 inputCameraPos;
+uniform float3 inputCameraPos1;
+uniform float3 inputCameraPos2;
 uniform float3 outputCameraPos;
-uniform float3 inputCameraRotation;
+uniform float3 inputCameraRotation1;
+uniform float3 inputCameraRotation2;
 uniform float3 outputCameraRotation;
-uniform float fovInput;
+uniform float fovInput1;
 uniform float fovOutput;
 uniform int imageWidth;
 uniform int imageHeight;
@@ -47,24 +50,8 @@ float3x3 EulerToRotationMatrix(float3 euler)
     return mul(rz, mul(ry, rx));
 }
 
-[numthreads(16,16,1)]
-void CSMain(uint3 id : SV_DispatchThreadID)
+void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inputCameraPos, float3 inputCameraRotation, float fovInput)
 {
-    if ((int)id.x >= imageWidth || (int)id.y >= imageHeight)
-        return;
-
-    // 读取输入深度值（r 通道）
-    float r_in = depthTexture[int2(id.xy)];
-    if (r_in == 0.0)
-        return;
-
-    // 计算实际深度：d_in = 0.2980392 / r_in
-    float d_in = 0.2980392 / r_in;
-
-    
-    float4 outColor = outputColor;
-    //if(d_in < 1) outColor = float4(1,0,0,1);
-
     // 将输入坐标转换为归一化屏幕坐标（范围 [-1,1]）
     float u = ((float)id.x + 0.5 - (float)imageWidth * 0.5) / ((float)imageWidth * 0.5) / 2;
     float v = ((float)id.y + 0.5 - (float)imageHeight * 0.5) / ((float)imageHeight * 0.5) / 2;
@@ -80,8 +67,6 @@ void CSMain(uint3 id : SV_DispatchThreadID)
     float3x3 R_out = EulerToRotationMatrix(outputCameraRotation);
     float3x3 R_out_inv = transpose(R_out);
     float3 P_out = mul(R_out_inv, (P_world - outputCameraPos));
-
-    //P_out= P_world - outputCameraPos;
 
     // 如果深度在输出相机后方，则跳过
     if (P_out.z <= 0.0)
@@ -126,3 +111,33 @@ void CSMain(uint3 id : SV_DispatchThreadID)
         }
     }
 }
+
+[numthreads(16,16,1)]
+void CSMain(uint3 id : SV_DispatchThreadID)
+{
+    if ((int)id.x >= imageWidth || (int)id.y >= imageHeight)
+        return;
+
+    // 读取输入深度值（r 通道）
+    float r_in1 = depthTexture1[int2(id.xy)];
+    if (r_in1 != 0.0)
+    {
+        // 计算实际深度：d_in = 0.2980392 / r_in
+        float d_in1 = 0.2980392 / r_in1;
+        
+        // 使用 inputCamera1 的深度
+        ProcessDepth(d_in1, id, r_in1, outputColor, inputCameraPos1, inputCameraRotation1, fovInput1);
+    }
+    
+    float r_in2 = depthTexture2[int2(id.xy)];
+    if (r_in2 != 0.0)
+    {
+        // 计算实际深度：d_in = 0.2980392 / r_in
+        float d_in2 = 0.2980392 / r_in2;
+        
+        // 使用 inputCamera2 的深度
+        ProcessDepth(d_in2, id, r_in2, outputColor, inputCameraPos2, inputCameraRotation2, fovInput1);
+    }
+}
+
+
