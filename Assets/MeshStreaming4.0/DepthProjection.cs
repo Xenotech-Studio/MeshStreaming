@@ -30,6 +30,8 @@ public class DepthReprojection : MonoBehaviour
     
     // Splat 半径（默认值 3）
     public int splatRadius = 3;
+    [Range(0,10)]
+    public int blurIterations = 1;
 
     public void Update()
     {
@@ -84,7 +86,23 @@ public class DepthReprojection : MonoBehaviour
         // 分配线程组（假设每组 16×16 像素）
         int threadGroupsX = Mathf.CeilToInt(inputDepth1.width / 16f);
         int threadGroupsY = Mathf.CeilToInt(inputDepth1.height / 16f);
+        
+        // 1) 主投影 pass（沿用你原来的 kernelHandle）
         depthReprojectionShader.Dispatch(kernelHandle, threadGroupsX, threadGroupsY, 1);
+        
+        // 2) blur pass
+        for (int i = 0; i < blurIterations; i++)
+        {
+            int blurKernel = depthReprojectionShader.FindKernel("CSSmooth");
+            RenderTexture tmp =
+                RenderTexture.GetTemporary(resultDepth.width, resultDepth.height, 0, resultDepth.format);
+            Graphics.Blit(resultDepth, tmp); // GPU-side copy
+            depthReprojectionShader.SetTexture(blurKernel, "ResultSrc", tmp); // t2
+            depthReprojectionShader.SetTexture(blurKernel, "Result", resultDepth); // u0
+            depthReprojectionShader.Dispatch(blurKernel, Mathf.CeilToInt(resultDepth.width / 16f),
+                Mathf.CeilToInt(resultDepth.height / 16f), 1);
+            RenderTexture.ReleaseTemporary(tmp);
+        }
     }
 }
 

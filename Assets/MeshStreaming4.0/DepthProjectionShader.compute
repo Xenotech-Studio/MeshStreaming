@@ -1,7 +1,8 @@
 #pragma kernel CSMain
 
 // 输出纹理：存储计算结果
-RWTexture2D<float4> Result;
+Texture2D<float4> ResultSrc : register(t2);   // 只读
+RWTexture2D<float4> Result   : register(u0);  // 写（继续用原来的名字）
 // 输入深度纹理（深度存储在红色通道）
 Texture2D<float> depthTexture1 : register(t0);
 Texture2D<float> depthTexture2 : register(t1);
@@ -98,8 +99,7 @@ void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inpu
         {
             // ① 圆形判定：若超出圆，则跳过
             float distSq = (float)(dx * dx + dy * dy);
-            if (distSq > (float)(actualSplatRadius * actualSplatRadius))
-                continue;
+            if (distSq > (float)(actualSplatRadius * actualSplatRadius)) continue;
 
             int2 outCoord = int2(x_out + dx, y_out + dy);
 
@@ -157,4 +157,36 @@ void CSMain(uint3 id : SV_DispatchThreadID)
     }
 }
 
+#pragma kernel CSSmooth
+
+[numthreads(16,16,1)]
+void CSSmooth(uint3 id : SV_DispatchThreadID)
+{
+    if (id.x >= outputWidth || id.y >= outputHeight) return;
+
+    // 5×5 高斯 (1 4 6 4 1)^2 / 256
+    const uint  k[5] = { 1, 4, 6, 4, 1 };
+    float4 sum     = 0;
+    uint   wSum    = 0;
+
+    for (int dx = -2; dx <= 2; ++dx)
+    {
+        int sx = id.x + dx;
+        if (sx < 0 || sx >= outputWidth) continue;
+        uint wx = k[abs(dx)];
+
+        for (int dy = -2; dy <= 2; ++dy)
+        {
+            int sy = id.y + dy;
+            if (sy < 0 || sy >= outputHeight) continue;
+            uint wy = k[abs(dy)];
+
+            uint  w  = wx * wy;   // 2D 权重
+            sum  += ResultSrc[int2(sx, sy)] * (float)w;
+            wSum += w;
+        }
+    }
+    Result[id.xy] = sum / (float)wSum;   // 归一化
+    // Result[id.xy] = ResultSrc[id.xy];
+}
 
