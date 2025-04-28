@@ -1,8 +1,9 @@
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class UseDepthReprojectionShader : MonoBehaviour
+public class DepthReprojection : MonoBehaviour
 {
+    [Header("Inputs:")]
     public Camera inputCamera1;       // 输入相机1（提供深度图）
     public RenderTexture inputDepth1; // 输入深度图1（需确保配置正确）
     
@@ -10,7 +11,12 @@ public class UseDepthReprojectionShader : MonoBehaviour
     public RenderTexture inputDepth2; // 输入深度图2（需确保配置正确）
     
     public Camera outputCamera;      // 输出相机（用于重投影）
+    
+    [Header("Output:")]
     public RenderTexture resultDepth; // 输出重投影结果，请手动挂引用
+    
+    
+    [Header("Parameters:")]
     public ComputeShader depthReprojectionShader;
     
     // Inspector 中可调的焦距系数，范围 0.8 ~ 2
@@ -25,7 +31,7 @@ public class UseDepthReprojectionShader : MonoBehaviour
     // Splat 半径（默认值 3）
     public int splatRadius = 3;
 
-    void Update()
+    public void Update()
     {
         // 若未挂引用则退出
         if (resultDepth == null || inputDepth1 == null || inputDepth2 == null)
@@ -79,3 +85,31 @@ public class UseDepthReprojectionShader : MonoBehaviour
         depthReprojectionShader.Dispatch(kernelHandle, threadGroupsX, threadGroupsY, 1);
     }
 }
+
+#if UNITY_EDITOR
+[UnityEditor.CustomEditor(typeof(DepthReprojection))]
+public class DepthReprojectionEditor : UnityEditor.Editor
+{
+    public override void OnInspectorGUI()
+    {
+        // info box
+        string description = "将两张输入图投影成新视角的深度图像\n" +
+                             "输入：两张深度图和他们的位置旋转 + 输出相机的位置旋转\n" +
+                             "输出：一张深度图\n" +
+                             "注意：因为原理类似于点云渲染，所以输入深度图的像素在输出图上泼溅为一个有半径的点";
+        UnityEditor.EditorGUILayout.HelpBox(description, UnityEditor.MessageType.None);
+        
+        base.OnInspectorGUI();
+        
+        serializedObject.Update();
+        
+        UnityEditor.EditorGUILayout.Separator();
+        if (GUILayout.Button("Update"))
+        {
+            ((DepthReprojection)target).Update();
+        }
+        
+        serializedObject.ApplyModifiedProperties();
+    }
+}
+#endif
