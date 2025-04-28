@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DepthToRenderTest-Simple
+  m_Name: DepthToRender
   m_Shader: {fileID: 4800000, guid: a698af311ca90da4b827c0a2e2ac15cc, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -83,8 +83,8 @@ Material:
     - _UseColor_2: 0
     m_Colors:
     - _BackgroundColor: {r: 0.3490564, g: 0.3490564, b: 0.3490564, a: 0}
-    - _CamOutPosition: {r: 0.408, g: 1.8, b: -0.921, a: 0}
-    - _CamOutRotation: {r: -0, g: 336.1068, b: 0, a: 0}
+    - _CamOutPosition: {r: 0.236, g: 1.8, b: -0.933, a: 0}
+    - _CamOutRotation: {r: -0, g: 345.80493, b: 0, a: 0}
     - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}
