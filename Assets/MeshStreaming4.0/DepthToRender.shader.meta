@@ -3,8 +3,11 @@ guid: a698af311ca90da4b827c0a2e2ac15cc
 ShaderImporter:
   externalObjects: {}
   defaultTextures:
-  - _D_true: {fileID: 8400000, guid: 0146383e3995643be92047c1c3fd405d, type: 2}
+  - _D_new: {fileID: 8400000, guid: 0146383e3995643be92047c1c3fd405d, type: 2}
+  - _D_1: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
   - _RGB_1: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
+  - _D_2: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
+  - _RGB_2: {fileID: 8400000, guid: 6e525e0933ba04ebe9d0f3860234333d, type: 2}
   nonModifiableTextures: []
   userData: 
   assetBundleName: 

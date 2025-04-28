@@ -13,7 +13,7 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _DEPTHORCOLOR_ON
+  - _DROPOCCULUSION_ON
   - _SUB1_ON
   - _SUB2_ON
   - _SUB3_ON
@@ -37,8 +37,16 @@ Material:
         m_Texture: {fileID: 8400000, guid: 008ecc74e3a374dc7b0378989802d355, type: 2}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _D_new:
+        m_Texture: {fileID: 8400000, guid: 556df4fd703fd1044b99de202bc57d36, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _D_true:
         m_Texture: {fileID: 8400000, guid: 556df4fd703fd1044b99de202bc57d36, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Depth1:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _RGB_1:
@@ -60,12 +68,22 @@ Material:
     - _CameraF: 1.17
     - _CameraOutF: 0.95
     - _DepthB: 0.022267
+    - _DepthB1: 0.022267
     - _DepthK: 0.2966
-    - _DepthOrColor: 1
+    - _DepthK1: 0.2966
+    - _DepthOrColor: 0
+    - _DropOcculusion: 1
+    - _EmptyWeight: 0.001
+    - _EmptyWeight1: 0.01
     - _Float0: 0
-    - _InputColorCameraF: 1.161
+    - _InputColorCameraF: 1.148
     - _MaxDepth: 1.3309573
     - _MaxDepthDelta: 1.5
+    - _NormalCalculateDelta: 0.003
+    - _NormalCoeff: 3.88
+    - _OcculusionTolerance: 0.05
+    - _ShowDepthOnly: 0
+    - _ShowNormalOnly: 0
     - _SomulateDepthCamF: 0.955
     - _Sub1: 1
     - _Sub2: 1
@@ -83,9 +101,9 @@ Material:
     - _UseColor_1: 0
     - _UseColor_2: 0
     m_Colors:
-    - _BackgroundColor: {r: 0.3490564, g: 0.3490564, b: 0.3490564, a: 0}
-    - _CamOutPosition: {r: 0.3246, g: 1.8, b: -0.9026, a: 0}
-    - _CamOutRotation: {r: -0, g: 340.22, b: 0, a: 0}
+    - _BackgroundColor: {r: 0.34905612, g: 0.34905612, b: 0.34905612, a: 0}
+    - _CamOutPosition: {r: 0.392, g: 1.881, b: -0.853, a: 0}
+    - _CamOutRotation: {r: 10.913126, g: 335.31863, b: 0.00000043474907, a: 0}
     - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}

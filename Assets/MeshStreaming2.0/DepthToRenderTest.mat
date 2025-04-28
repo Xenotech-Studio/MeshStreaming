@@ -80,8 +80,8 @@ Material:
     - _UseColor_2: 0
     m_Colors:
     - _BackgroundColor: {r: 0.3490564, g: 0.3490564, b: 0.3490564, a: 0}
-    - _CamOutPosition: {r: 0.3246, g: 1.8, b: -0.9026, a: 0}
-    - _CamOutRotation: {r: -0, g: 340.22, b: 0, a: 0}
+    - _CamOutPosition: {r: 0.392, g: 1.881, b: -0.853, a: 0}
+    - _CamOutRotation: {r: 10.913126, g: 335.31863, b: 0.00000043474907, a: 0}
     - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: -0, g: 0, b: 0, a: 0}
