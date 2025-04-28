@@ -70,8 +70,10 @@ public class DepthReprojection : MonoBehaviour
         depthReprojectionShader.SetFloat("fovOutput", fovOutput);
         
         // 传递图像尺寸（整数）
-        depthReprojectionShader.SetInt("imageWidth", inputDepth1.width);
-        depthReprojectionShader.SetInt("imageHeight", inputDepth1.height);
+        depthReprojectionShader.SetInt("inputWidth",     inputDepth1.width);
+        depthReprojectionShader.SetInt("inputHeight",    inputDepth1.height);
+        depthReprojectionShader.SetInt("outputWidth",    resultDepth.width);
+        depthReprojectionShader.SetInt("outputHeight",   resultDepth.height);
         
         // 传递 Inspector 可调的输出颜色
         depthReprojectionShader.SetVector("outputColor", outputColor);

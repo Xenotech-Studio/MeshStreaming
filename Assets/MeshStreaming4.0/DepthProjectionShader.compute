@@ -15,8 +15,10 @@ uniform float3 inputCameraRotation2;
 uniform float3 outputCameraRotation;
 uniform float fovInput1;
 uniform float fovOutput;
-uniform int imageWidth;
-uniform int imageHeight;
+uniform int inputWidth;
+uniform int inputHeight;
+uniform int outputWidth;
+uniform int outputHeight;
 
 // 新的输出颜色
 uniform float4 outputColor;
@@ -53,8 +55,8 @@ float3x3 EulerToRotationMatrix(float3 euler)
 void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inputCameraPos, float3 inputCameraRotation, float fovInput)
 {
     // 将输入坐标转换为归一化屏幕坐标（范围 [-1,1]）
-    float u = ((float)id.x + 0.5 - (float)imageWidth * 0.5) / ((float)imageWidth * 0.5) / 2;
-    float v = ((float)id.y + 0.5 - (float)imageHeight * 0.5) / ((float)imageHeight * 0.5) / 2;
+    float u = ((float)id.x + 0.5 - (float)inputWidth * 0.5) / ((float)inputWidth * 0.5) / 2;
+    float v = ((float)id.y + 0.5 - (float)inputHeight * 0.5) / ((float)inputHeight * 0.5) / 2;
 
     // 重构输入相机空间中的三维坐标
     float3 P_in = float3(u * d_in * fovInput, v * d_in * fovInput, d_in);
@@ -77,8 +79,8 @@ void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inpu
     float v_out = (P_out.y / P_out.z) * fovOutput;
 
     // 将归一化屏幕坐标映射回输出图像像素坐标
-    float x_out = (u_out*2 + 1.0) * 0.5 * (float)imageWidth;
-    float y_out = (v_out*2 + 1.0) * 0.5 * (float)imageHeight;
+    float x_out = (u_out*2 + 1.0) * 0.5 * (float)outputWidth;
+    float y_out = (v_out*2 + 1.0) * 0.5 * (float)outputHeight;
 
     // 计算输出深度
     float d_out = P_out.z;
@@ -86,36 +88,51 @@ void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inpu
     // 反算深度值：r_out = 0.2980392 / d_out
     float r_out = (d_out > 0.0) ? (0.2980392 / d_out) : 0.0;
 
-    // 计算输出颜色
-    float4 finalColor = r_out * outColor;
+    // 计算在输出图上的splatRadius
+    int actualSplatRadius = (int)(splatRadius * outputHeight / inputHeight);
 
-    // 用 splat 半径进行深度融合
-    for (int dx = -splatRadius; dx <= splatRadius; dx++)
+    // --- begin new splat loop ---
+    for (int dx = -actualSplatRadius; dx <= actualSplatRadius; dx++)
     {
-        for (int dy = -splatRadius; dy <= splatRadius; dy++)
+        for (int dy = -actualSplatRadius; dy <= actualSplatRadius; dy++)
         {
+            // ① 圆形判定：若超出圆，则跳过
+            float distSq = (float)(dx * dx + dy * dy);
+            if (distSq > (float)(actualSplatRadius * actualSplatRadius))
+                continue;
+
             int2 outCoord = int2(x_out + dx, y_out + dy);
 
-            // 判断是否在图像范围内
-            if (outCoord.x >= 0 && outCoord.x < imageWidth && outCoord.y >= 0 && outCoord.y < imageHeight)
-            {
-                // 获取已有深度值
-                float r_existing = Result[outCoord].r;
+            // ② 落在屏幕内才处理
+            if (outCoord.x < 0 || outCoord.x >= outputWidth ||
+                outCoord.y < 0 || outCoord.y >= outputHeight)
+                continue;
 
-                // 如果新的深度值更近（更大 r 值），则更新输出
-                if (r_out > r_existing)
-                {
-                    Result[outCoord] = finalColor;
-                }
+            // ③ 与圆心距离的线性衰减（中心=1，半径=0）
+            //float weight  = sqrt(1 - distSq/((float)(actualSplatRadius * actualSplatRadius)));
+            //weight = weight/2 + 1/2;
+            float weight = 1;
+
+            // ④ 现有深度
+            float r_existing = Result[outCoord].r;
+
+            float r_wanted = r_out * weight;
+
+            // ⑤ 若该像素更近 ⇒ 写入（并加入权重衰减）
+            if (r_wanted > r_existing)
+            {
+                // Result[outCoord] = r_out * outColor;
+                Result[outCoord] = r_wanted * outColor;
             }
         }
     }
+    // --- end new splat loop ---
 }
 
 [numthreads(16,16,1)]
 void CSMain(uint3 id : SV_DispatchThreadID)
 {
-    if ((int)id.x >= imageWidth || (int)id.y >= imageHeight)
+    if ((int)id.x >= inputWidth || (int)id.y >= inputHeight)
         return;
 
     // 读取输入深度值（r 通道）
