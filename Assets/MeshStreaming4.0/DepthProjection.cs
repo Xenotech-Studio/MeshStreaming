@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -29,7 +30,7 @@ public class DepthReprojection : MonoBehaviour
     public Color outputColor = Color.red;
     
     // Splat 半径（默认值 3）
-    public int splatRadius = 3;
+    public float splatRadius = 3;
     [Range(0,10)]
     public int blurIterations = 1;
 
@@ -79,9 +80,14 @@ public class DepthReprojection : MonoBehaviour
         
         // 传递 Inspector 可调的输出颜色
         depthReprojectionShader.SetVector("outputColor", outputColor);
+
+        float input1Distance = (inputCameraPos1 - new Vector3(0, inputCameraPos1.y, 0)).magnitude;
+        float input2Distance = (inputCameraPos2 - new Vector3(0, inputCameraPos2.y, 0)).magnitude;
+        float inputDistance = Math.Max(input1Distance, input2Distance);
+        float outputDistance = (outputCameraPos - new Vector3(0, outputCameraPos.y, 0)).magnitude;
         
         // 传递 splat 半径
-        depthReprojectionShader.SetInt("splatRadius", splatRadius);
+        depthReprojectionShader.SetFloat("splatRadius", splatRadius * (resultDepth.width / inputDepth1.width) * (inputDistance / outputDistance) );
         
         // 分配线程组（假设每组 16×16 像素）
         int threadGroupsX = Mathf.CeilToInt(inputDepth1.width / 16f);

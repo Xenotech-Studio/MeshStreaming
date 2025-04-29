@@ -20,6 +20,9 @@ public class OrbitCamera : MonoBehaviour
     public float maxDistance = 15f;
     public float minPitch = -30f;
     public float maxPitch = 80f;
+    
+    public float maxYaw = 30f; // 旋转限制，默认不限制
+    public float minYaw = -1f; // 旋转限制，默认不限制
 
     [Header("Speeds")]
     public float rotateSpeed = 150f;      // °/s
@@ -109,6 +112,7 @@ public class OrbitCamera : MonoBehaviour
         distance *= zoomScale;
 
         pitch    = Mathf.Clamp(pitch,   minPitch,   maxPitch);
+        yaw      = Mathf.Clamp(yaw,     minYaw,     maxYaw);
         distance = Mathf.Clamp(distance, minDistance, maxDistance);
     }
 

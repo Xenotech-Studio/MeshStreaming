@@ -25,7 +25,7 @@ uniform int outputHeight;
 uniform float4 outputColor;
 
 // Splat 半径（默认 3）
-uniform int splatRadius;
+uniform float splatRadius;
 
 // 根据 Euler 角生成旋转矩阵
 float3x3 EulerToRotationMatrix(float3 euler)
@@ -90,7 +90,7 @@ void ProcessDepth(float d_in, uint3 id, float r_in, float4 outColor, float3 inpu
     float r_out = (d_out > 0.0) ? (0.2980392 / d_out) : 0.0;
 
     // 计算在输出图上的splatRadius
-    int actualSplatRadius = (int)(splatRadius * outputHeight / inputHeight);
+    int actualSplatRadius = (int)(splatRadius);
 
     // --- begin new splat loop ---
     for (int dx = -actualSplatRadius; dx <= actualSplatRadius; dx++)

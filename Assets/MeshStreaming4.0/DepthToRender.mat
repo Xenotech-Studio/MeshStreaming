@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
   m_InvalidKeywords:
-  - _DROPOCCULUSION_ON
   - _SUB1_ON
   - _SUB2_ON
   - _SUB3_ON
@@ -72,7 +71,7 @@ Material:
     - _DepthK: 0.2966
     - _DepthK1: 0.2966
     - _DepthOrColor: 0
-    - _DropOcculusion: 1
+    - _DropOcculusion: 0
     - _EmptyWeight: 0.001
     - _EmptyWeight1: 0.01
     - _Float0: 0
@@ -102,8 +101,8 @@ Material:
     - _UseColor_2: 0
     m_Colors:
     - _BackgroundColor: {r: 0.34905612, g: 0.34905612, b: 0.34905612, a: 0}
-    - _CamOutPosition: {r: 0.601, g: 1.905, b: -0.872, a: 0}
-    - _CamOutRotation: {r: 8.32656, g: 325.42462, b: 0.00000021571734, a: 0}
+    - _CamOutPosition: {r: 0.515, g: 1.884, b: -1.109, a: 0}
+    - _CamOutRotation: {r: 6.2540545, g: 335.09067, b: 0, a: 0}
     - _Camera1Position: {r: 0, g: 1.8, b: -1, a: 0}
     - _Camera1Position1: {r: 0, g: 0, b: 0, a: 0}
     - _Camera1Rotation: {r: 0, g: 0, b: 0, a: 0}

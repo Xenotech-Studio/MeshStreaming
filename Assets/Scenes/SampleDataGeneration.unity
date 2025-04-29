@@ -5545,6 +5545,8 @@ MonoBehaviour:
   maxDistance: 3
   minPitch: -40
   maxPitch: 20
+  maxYaw: 180
+  minYaw: 135
   rotateSpeed: 200
   zoomSpeed: 1
   pinchFactor: 0.02
@@ -13904,6 +13906,7 @@ MonoBehaviour:
   TextureMappingMaterial:
   - {fileID: 2100000, guid: 7e4bc616a01904f27a7aa1acc5860093, type: 2}
   - {fileID: 2100000, guid: 3c0bcb7575c254feda220445f494df68, type: 2}
+  - {fileID: 2100000, guid: 87efd426eed002e4688b330621fd4b97, type: 2}
   Cameras:
   - {fileID: 809483828}
   - {fileID: 910369449}
@@ -17422,8 +17425,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142458981}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06931933, y: -0.29638568, z: 0.02157424, w: 0.9523051}
-  m_LocalPosition: {x: 0.601, y: 1.905, z: -0.872}
+  m_LocalRotation: {x: 0.053266108, y: -0.21534586, z: 0.011764596, w: 0.9750131}
+  m_LocalPosition: {x: 0.515, y: 1.884, z: -1.109}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
